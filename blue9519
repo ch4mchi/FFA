@@ -1,6 +1,0 @@
-#include <stdio.h>
-int main(void)
-{
-	printf ("Oh, it's very hard... T.T\n");
-	return 0;
-}
