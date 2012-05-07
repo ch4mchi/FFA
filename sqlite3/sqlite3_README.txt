@@ -20,7 +20,7 @@ close_db : close db
 
 insert_ap : insert new AP to database
 	ex)
-		struct AP_info newAP;
+		struct FFA_AP_info newAP;
 
 		strcpy(newAP.ap_essid, "KoreaUniv AP");
 		strcpy(newAP.ap_bssid, "123abc");
@@ -29,14 +29,14 @@ insert_ap : insert new AP to database
 		insert_ap(newAP);
 
 get_select_ap_count : get number of rows in result of "select * from AP"
-		      it is necessary for allocate memory to (struct AP_info *)
+		      it is necessary for allocate memory to (struct FFA_AP_info *)
 	ex)
-		struct AP_info *AP_arr;
+		struct FFA_AP_info *AP_arr;
 		int ap_n;
 		
 		ap_n = get_select_ap_count();
 		
-		AP_arr = (struct AP_info *)malloc(ap_n * sizeof(struct AP_info));
+		AP_arr = (struct FFA_AP_info *)malloc(ap_n * sizeof(struct FFA_AP_info));
 
 select_ap : get all APs from database
 	ex)
@@ -49,7 +49,7 @@ delete_ap : delete all APs from database when program is exit
 
 insert_client : insert new client to database
 	ex)
-		struct client_info newClient;
+		struct FFA_client_info newClient;
 		
 		strcpy(newClient.conn_ap_bssid, "456def");
 		strcpy(newClient.client_bssid, "789123");
@@ -59,12 +59,12 @@ insert_client : insert new client to database
 get_select_client_count : get number of rows in result of select, that clients are connect to specific AP
 	ex)
 		//use above newAP
-		struct client_info *clientArr;
+		struct FFA_client_info *clientArr;
 		int cl_n;
 		
 		cl_n = get_select_client_count(newAP);
 
-		clientArr = (struct client_info *)malloc(cl_n * sizeof(struct client_info));
+		clientArr = (struct FFA_client_info *)malloc(cl_n * sizeof(struct FFA_client_info));
 
 select_client : select all clients which are connect to specific AP
 	ex)

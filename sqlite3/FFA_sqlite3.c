@@ -78,7 +78,7 @@ int execute_query(char *query, int (*callback)(void *, int, char **, char **), v
 	return 0;
 }
 	
-int insert_ap(struct AP_info AP)
+int insert_ap(struct FFA_AP_info AP)
 {
 	char query[297] = "insert into AP values(\"";
 	
@@ -126,7 +126,7 @@ int get_select_ap_count()
 	return rows;
 }
 
-void select_ap(struct AP_info *APs)
+void select_ap(struct FFA_AP_info *APs)
 {
 	int chk;
 	int retval;
@@ -182,7 +182,7 @@ int delete_ap()
 	return 0;
 }
 
-int insert_client(struct client_info client)
+int insert_client(struct FFA_client_info client)
 {
 	char query[45] = "insert into client values(\"";
 
@@ -205,7 +205,7 @@ int insert_client(struct client_info client)
 	return 0;
 }
 
-int get_select_client_count(struct AP_info conn_AP)
+int get_select_client_count(struct FFA_AP_info conn_AP)
 {
 	int rows, cols, num;
 	int ret;
@@ -230,7 +230,7 @@ int get_select_client_count(struct AP_info conn_AP)
 	return rows;
 }
 
-void select_client(struct client_info clnts[], struct AP_info conn_AP)
+void select_client(struct FFA_client_info clnts[], struct FFA_AP_info conn_AP)
 {
 	int chk;
 	int retval;
