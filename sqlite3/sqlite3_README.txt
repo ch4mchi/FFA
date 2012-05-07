@@ -6,8 +6,17 @@ compile : gcc -o (output) (src) FFA_sqlite3.c -L /usr/local/lib -l sqlite3
 
 write connect_db(db); at the front of source
 	ex) connect_db("FFA.db");
+	    // you don't have to create file "*.db", just input file name then file is automatically created.
+
+write close_db(); at the end of database activity
+	ex) ~~~~
+	    close_db();
 
 --functions
+
+connect_db : connect to db and create table if not exists
+
+close_db : close db
 
 insert_ap : insert new AP to database
 	ex)

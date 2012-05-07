@@ -20,11 +20,42 @@ char *itoa(int n)
 
 int connect_db(char *db_name)
 {
+	int chk;
+
 	rc = sqlite3_open(db_name, &db);
 	if(rc)
 	{
 		fprintf(stderr, "Can't open database : %s\n", sqlite3_errmsg(db));
 		sqlite3_close(db);
+		
+		return -1;
+	}
+	
+	chk = execute_query("create table if not exists AP (ap_essid char(256), ap_bssid char(6) primary key, ap_channel int)", 0, 0);
+	if(chk == -1)
+	{
+		puts("create table \"AP\" error");
+
+		return -1;
+	}
+
+	chk = execute_query("create table if not exists client (conn_ap_bssid char(6), client_bssid char(6) primary key)", 0, 0);
+	if(chk == -1)
+	{
+		puts("create table \"client\" error");
+
+		return -1;
+	}
+
+	return 0;
+}
+
+int close_db()
+{
+	rc = sqlite3_close(db);
+	if(rc)
+	{
+		fprintf(stderr, "Can't close database : %s\n", sqlite3_errmsg(db));
 		
 		return -1;
 	}

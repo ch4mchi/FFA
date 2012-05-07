@@ -26,6 +26,7 @@ char *itoa(int);
 int insert_delete_callback(void *, int , char **, char **);
 
 int connect_db(char *);
+int close_db();
 int execute_query(char *, int (*)(void *, int, char **, char**), void *);
 
 int insert_ap(struct AP_info);
