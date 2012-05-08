@@ -1,5 +1,6 @@
 #include <QtGui/QApplication>
 #include "mainwindow.h"
+#include "FFA_sqlite3.h"
 
 char **argv_main;
 
