@@ -2820,11 +2820,10 @@ void dump_print( int ws_row, int ws_col, int if_num )
 
     int num_ap;
     int num_sta;
-
+	
 	struct FFA_AP_info input_ap;
 	struct FFA_client_info input_client;
 	
-	FILE *f = fopen("log.txt", "w+");
     if(!G.singlechan) columns_ap -= 4; //no RXQ in scan mode
 
     nlines = 2;
@@ -3022,20 +3021,17 @@ void dump_print( int ws_row, int ws_col, int if_num )
 		return;
 
 /*-------save ap info to db -------------*/
-		fputs("debug 11", f);
-		memset(input_ap.ap_essid, '\0', sizeof(input_ap.ap_essid));
-		fputs("debug 12", f);
-		snprintf(input_ap.ap_bssid, sizeof(input_ap.ap_bssid), "%-6s", ap_cur->bssid);
+		memset(input_ap.ap_bssid, '\0', sizeof(input_ap.ap_bssid));
 
-		fputs("debug 13", f);
-		snprintf(input_ap.ap_essid, sizeof(ap_cur->essid), "%s", ap_cur->essid);
-		fputs("debug 14",f);
+		snprintf(input_ap.ap_bssid, sizeof(input_ap.ap_bssid), "%02X:%02X:%02X:%02X:%02X:%02X",
+			ap_cur->bssid[0], ap_cur->bssid[1], ap_cur->bssid[2],
+			ap_cur->bssid[3], ap_cur->bssid[4], ap_cur->bssid[5]);
+
+		snprintf(input_ap.ap_essid, sizeof(ap_cur->essid)-1, "%s", ap_cur->essid);
 		input_ap.ap_channel = ap_cur->channel;
-		fprintf(f, "debug 15 %s\n", input_ap.ap_essid);
 		insert_ap(input_ap);
-		fputs("debug 16",f);
 /*------------------------------------*/
-		fclose(f);
+
 	    memset(strbuf, '\0', sizeof(strbuf));
 
 	    snprintf( strbuf, sizeof(strbuf), " %02X:%02X:%02X:%02X:%02X:%02X",
@@ -3237,18 +3233,15 @@ void dump_print( int ws_row, int ws_col, int if_num )
 		    return;
 
 //-------save client info to db--------------------------------//
-		snprintf(input_client.conn_ap_bssid, sizeof(input_client.conn_ap_bssid), "%c%c%c%c%c%c",
+		snprintf(input_client.conn_ap_bssid, sizeof(input_client.conn_ap_bssid), "%02X:%02X:%02X:%02X:%02X:%02X",
 			ap_cur->bssid[0], ap_cur->bssid[1], ap_cur->bssid[2],
 			ap_cur->bssid[3], ap_cur->bssid[4], ap_cur->bssid[5]);
-		puts("debug 21");
-		snprintf(input_client.client_bssid, sizeof(input_client.client_bssid), "%c%c%c%c%c%c",
+		snprintf(input_client.client_bssid, sizeof(input_client.client_bssid), "%02X:%02X:%02X:%02X:%02X:%02X",
 			st_cur->stmac[0], st_cur->stmac[1], st_cur->stmac[2],
 			st_cur->stmac[3], st_cur->stmac[4], st_cur->stmac[5]);
-		puts("debug 22");
 		insert_client(input_client);
-		puts("debug 23");
 //-------------------------------------------------------------//
-
+		
 		if( ! memcmp( ap_cur->bssid, BROADCAST, 6 ) )
 		    fprintf( stderr, " (not associated) " );
 		else
