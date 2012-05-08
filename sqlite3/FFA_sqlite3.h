@@ -7,13 +7,13 @@
 
 struct FFA_AP_info{
 	char ap_essid[256];
-	char ap_bssid[7];
+	char ap_bssid[17];
 	int  ap_channel;
 };
 
 struct FFA_client_info{
-	char conn_ap_bssid[7];
-	char client_bssid[7];
+	char conn_ap_bssid[17];
+	char client_bssid[17];
 };
 
 sqlite3 *db;
