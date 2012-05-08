@@ -31,7 +31,7 @@ int connect_db(char *db_name)
 		return -1;
 	}
 	
-	chk = execute_query("create table if not exists AP (ap_essid char(256), ap_bssid char(6) primary key, ap_channel int)", 0, 0);
+	chk = execute_query("create table if not exists AP (ap_essid char(256), ap_bssid char(17) primary key, ap_channel int)", 0, 0);
 	if(chk == -1)
 	{
 		puts("create table \"AP\" error");
@@ -39,7 +39,7 @@ int connect_db(char *db_name)
 		return -1;
 	}
 
-	chk = execute_query("create table if not exists client (conn_ap_bssid char(6), client_bssid char(6) primary key)", 0, 0);
+	chk = execute_query("create table if not exists client (conn_ap_bssid char(17), client_bssid char(17) primary key)", 0, 0);
 	if(chk == -1)
 	{
 		puts("create table \"client\" error");
