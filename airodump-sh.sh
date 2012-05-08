@@ -1,3 +1,3 @@
 #!/bin/sh
 
-./aircrack/src/airodump-ng mon0
+./airodump-ng mon0
