@@ -39,31 +39,6 @@
       <height>31</height>
      </rect>
     </property>
-    <item>
-     <property name="text">
-      <string>ASDF</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>SDFG</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>WEWB</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>QGEW</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Awkenv</string>
-     </property>
-    </item>
    </widget>
    <widget class="QPushButton" name="btn2">
     <property name="geometry">
