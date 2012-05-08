@@ -2821,6 +2821,11 @@ void dump_print( int ws_row, int ws_col, int if_num )
     int num_ap;
     int num_sta;
 
+	struct FFA_AP_info input_ap;
+	struct FFA_client_info input_client;
+
+	connect_db("FFA_test.db");
+
     if(!G.singlechan) columns_ap -= 4; //no RXQ in scan mode
 
     nlines = 2;
@@ -2855,7 +2860,7 @@ void dump_print( int ws_row, int ws_col, int if_num )
             G.numaps++;
             ap_cur = ap_cur->prev;
         }
-
+	//at the end of ap list, get one and potin prev ap
         if(G.numaps > G.maxnumaps)
             G.maxnumaps = G.numaps;
 
@@ -3016,6 +3021,16 @@ void dump_print( int ws_row, int ws_col, int if_num )
 
 	    if( nlines > (ws_row-1) )
 		return;
+
+/*-------save ap info to db -------------*/
+		memset(input_ap.ap_essid, '\0', sizeof(input_ap.ap_essid));
+	
+		snprintf(input_ap.ap_bssid, sizeof(ap_cur->bssid), "%s", ap_cur->bssid);
+		snprintf(input_ap.ap_essid, sizeof(ap_cur->essid), "%s", ap_cur->essid);
+		input_ap.ap_channel = ap_cur->channel;
+
+		insert_ap(input_ap);
+/*------------------------------------*/
 
 	    memset(strbuf, '\0', sizeof(strbuf));
 
@@ -3217,6 +3232,13 @@ void dump_print( int ws_row, int ws_col, int if_num )
 		if( ws_row != 0 && nlines >= ws_row )
 		    return;
 
+//-------save client info to db--------------------------------//
+		snprintf(input_client.conn_ap_bssid, sizeof(ap_cur->bssid), "%s", ap_cur->bssid);
+		snprintf(input_client.client_bssid, sizeof(st_cur->stmac), "%s", st_cur->stmac);
+
+		insert_client(input_client);
+//-------------------------------------------------------------//
+
 		if( ! memcmp( ap_cur->bssid, BROADCAST, 6 ) )
 		    fprintf( stderr, " (not associated) " );
 		else
@@ -3336,6 +3358,8 @@ void dump_print( int ws_row, int ws_col, int if_num )
             na_cur = na_cur->next;
         }
     }
+
+	close_db();
 }
 
 int dump_write_csv( void )
