@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <unistd.h>
+
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QItemSelection>

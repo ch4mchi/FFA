@@ -2823,7 +2823,8 @@ void dump_print( int ws_row, int ws_col, int if_num )
 
 	struct FFA_AP_info input_ap;
 	struct FFA_client_info input_client;
-
+	
+	FILE *f = fopen("log.txt", "w+");
     if(!G.singlechan) columns_ap -= 4; //no RXQ in scan mode
 
     nlines = 2;
@@ -3021,22 +3022,20 @@ void dump_print( int ws_row, int ws_col, int if_num )
 		return;
 
 /*-------save ap info to db -------------*/
-		puts("debug 11");
-	//	memset(input_ap.ap_essid, '\0', sizeof(input_ap.ap_essid));
-		puts("debug 12");
-		snprintf(input_ap.ap_bssid, sizeof(input_ap.ap_bssid), "%c%c%c%c%c%c",
-			ap_cur->bssid[0], ap_cur->bssid[1], ap_cur->bssid[2],
-			ap_cur->bssid[3], ap_cur->bssid[4], ap_cur->bssid[5]);
+		fputs("debug 11", f);
+		memset(input_ap.ap_essid, '\0', sizeof(input_ap.ap_essid));
+		fputs("debug 12", f);
+		snprintf(input_ap.ap_bssid, sizeof(input_ap.ap_bssid), "%-6s", ap_cur->bssid);
 
-		puts("debug 13");
-		snprintf(input_ap.ap_essid, sizeof(input_ap.ap_essid)-1, "%-256s", ap_cur->essid);
-		puts("debug 14");
+		fputs("debug 13", f);
+		snprintf(input_ap.ap_essid, sizeof(ap_cur->essid), "%s", ap_cur->essid);
+		fputs("debug 14",f);
 		input_ap.ap_channel = ap_cur->channel;
-		puts("debug 15");
+		fprintf(f, "debug 15 %s\n", input_ap.ap_essid);
 		insert_ap(input_ap);
-		puts("debug 16");
+		fputs("debug 16",f);
 /*------------------------------------*/
-
+		fclose(f);
 	    memset(strbuf, '\0', sizeof(strbuf));
 
 	    snprintf( strbuf, sizeof(strbuf), " %02X:%02X:%02X:%02X:%02X:%02X",

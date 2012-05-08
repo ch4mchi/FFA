@@ -7,7 +7,7 @@
 
 struct FFA_AP_info{
 	char ap_essid[256];
-	char ap_bssid[7];
+	char ap_bssid[6];
 	int  ap_channel;
 };
 

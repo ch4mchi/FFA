@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "FunctionList.h"
-//#include "FFA_sqlite3.h"
 #include <QProcess>
 #include <QString>
 
@@ -10,8 +9,10 @@ void MainWindow::airmonFunc()
 {
 	static bool st = false;
 	QProcess *airmon = new QProcess();
+//	QProcess *airodump = new QProcess();
 	QString airmon_start = "/home/letorika/Dev/FFA/QT/airmon-sh.sh";
 	QString airmon_stop = "/home/letorika/Dev/FFA/QT/airmon-ksh.sh";
+	QString airodump_start = "/home/letorika/Dev/FFA/QT/airodump-sh.sh";
 	QString path = argv_main[0];	
 
 	if(st)
@@ -36,6 +37,7 @@ void MainWindow::airmonFunc()
 
 		QMessageBox::warning(NULL,"adsf",airmon_start);
 		airmon->start(airmon_start);
+		sleep(5);
 		initTable();
 		connect_db("test22.db");
 		st = true;
