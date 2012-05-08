@@ -1,23 +1,5 @@
 #include "FFA_sqlite3.h"
 
-char *itoa(int n)
-{
-	char *str_n;
-
-	if(n >= 10)
-	{
-		str_n = (char*)malloc(2*sizeof(char));
-		sprintf(str_n, "%d", n);
-	}
-	else
-	{
-		str_n = (char*)malloc(sizeof(char));
-		sprintf(str_n, "%d", n);
-	}
-	
-	return str_n;
-}
-
 int connect_db(char *db_name)
 {
 	int chk;
@@ -31,7 +13,7 @@ int connect_db(char *db_name)
 		return -1;
 	}
 	
-	chk = execute_query("create table if not exists AP (ap_essid char(256), ap_bssid char(6) primary key, ap_channel int)", 0, 0);
+	chk = execute_query("create table if not exists AP (ap_essid char(256), ap_bssid char(17) primary key, ap_channel int)", 0, 0);
 	if(chk == -1)
 	{
 		puts("create table \"AP\" error");
@@ -39,7 +21,7 @@ int connect_db(char *db_name)
 		return -1;
 	}
 
-	chk = execute_query("create table if not exists client (conn_ap_bssid char(6), client_bssid char(6) primary key)", 0, 0);
+	chk = execute_query("create table if not exists client (conn_ap_bssid char(17), client_bssid char(17) primary key)", 0, 0);
 	if(chk == -1)
 	{
 		puts("create table \"client\" error");
@@ -80,29 +62,18 @@ int execute_query(char *query, int (*callback)(void *, int, char **, char **), v
 	
 int insert_ap(struct FFA_AP_info AP)
 {
-	char query[299] = "insert into AP values(\"";
-	
-	int essid_len = strlen(AP.ap_essid);
-	int channel_len = strlen(itoa(AP.ap_channel));
 	int chk;
-	
-	strncat(query, AP.ap_essid, essid_len);
-	strcat(query, "\", \"");
+	char query[309];
 
-	strncat(query, AP.ap_bssid, 6);
-	strcat(query, "\", ");
-	
-	strncat(query, itoa(AP.ap_channel), channel_len);
-	strcat(query, ")");
-	puts(query);
-	chk = execute_query(query, 0, 0);
-	puts("query 1");
-	if(chk == -1) 
+	sprintf(query, "insert into AP values(\"%s\", \"%s\", %d)", AP.ap_essid, AP.ap_bssid, AP.ap_channel);
+
+	chk = execute_query(query, 0 ,0);
+	if(chk == -1)
 	{
-		puts("insert_ap error");
+		puts("insert ap error");
 		return -1;
 	}
-	
+
 	return 0;
 }
 
@@ -153,9 +124,9 @@ void select_ap(struct FFA_AP_info *APs)
 				val = (const char *)sqlite3_column_text(stmt, col);
 				
 				if(col == 0)
-					strncpy(APs[index].ap_essid, val, strlen(val)+1);
+					strncpy(APs[index].ap_essid, val, strlen(val));
 				else if(col == 1)
-					strncpy(APs[index].ap_bssid, val, 7);
+					strncpy(APs[index].ap_bssid, val, 17);
 				else if(col == 2)
 					APs[index].ap_channel = atoi(val);
 			}
@@ -182,15 +153,10 @@ int delete_ap()
 
 int insert_client(struct FFA_client_info client)
 {
-	char query[46] = "insert into client values(\"";
-
+	char query[68];
 	int chk;
 
-	strncat(query, client.conn_ap_bssid, 6);
-	strcat(query, "\", \"");
-
-	strncat(query, client.client_bssid, 6);
-	strcat(query, "\")");
+	sprintf(query, "insert into client values(\"%s\", \"%s\")", client.conn_ap_bssid, client.client_bssid);	
 
 	chk = execute_query(query, 0, 0);
 
@@ -209,10 +175,9 @@ int get_select_client_count(struct FFA_AP_info conn_AP)
 	int ret;
 	char **res;
 	char *zQuery;
-	char query[82] = "select distinct client.* from client JOIN AP where client.conn_ap_bssid = \"";
-	
-	strncat(query, conn_AP.ap_bssid, 6);
-	strcat(query, "\"");
+	char query[93];
+
+	sprintf(query, "select distinct client.* from client JOIN AP where client.conn_ap_bssid = \"%s\"", conn_AP.ap_bssid);
 	
 	zQuery = sqlite3_mprintf(query);
 	ret = sqlite3_get_table(db, zQuery, &res, &rows, &cols, &ErrMsg);
@@ -234,10 +199,9 @@ void select_client(struct FFA_client_info clnts[], struct FFA_AP_info conn_AP)
 	int cols, col;
 	int index = 0;
 	const char *val;
-	char query[82] = "select distinct client.* from client JOIN AP where client.conn_ap_bssid = \"";
+	char query[93];
 
-	strncat(query, conn_AP.ap_bssid, 6);
-	strcat(query, "\"");
+	sprintf(query, "select distinct client.* from client JOIN AP where client.conn_ap_bssid = \"%s\"", conn_AP.ap_bssid);
 
 	retval = sqlite3_prepare_v2(db, query, -1, &stmt, 0);
 	if(retval)
@@ -259,9 +223,9 @@ void select_client(struct FFA_client_info clnts[], struct FFA_AP_info conn_AP)
 				val = (const char *)sqlite3_column_text(stmt, col);
 
 				if(col == 0)
-					strncpy(clnts[index].conn_ap_bssid, val, 7);
+					strncpy(clnts[index].conn_ap_bssid, val, 17);
 				else if(col == 1)
-					strncpy(clnts[index].client_bssid, val, 7);
+					strncpy(clnts[index].client_bssid, val, 17);
 			}
 
 			index++;

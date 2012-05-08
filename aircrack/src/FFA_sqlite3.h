@@ -7,21 +7,19 @@
 
 struct FFA_AP_info{
 	char ap_essid[256];
-	char ap_bssid[6];
+	char ap_bssid[18];
 	int  ap_channel;
 };
 
 struct FFA_client_info{
-	char conn_ap_bssid[7];
-	char client_bssid[7];
+	char conn_ap_bssid[18];
+	char client_bssid[18];
 };
 
 sqlite3 *db;
 sqlite3_stmt *stmt;
 char *ErrMsg;
 int rc;
-
-char *itoa(int);
 
 int insert_delete_callback(void *, int , char **, char **);
 

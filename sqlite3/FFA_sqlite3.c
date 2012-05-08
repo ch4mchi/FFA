@@ -124,11 +124,12 @@ void select_ap(struct FFA_AP_info *APs)
 				val = (const char *)sqlite3_column_text(stmt, col);
 				
 				if(col == 0)
-					strncpy(APs[index].ap_essid, val, strlen(val));
+					sprintf(APs[index].ap_essid, "%s", val);
 				else if(col == 1)
-					strncpy(APs[index].ap_bssid, val, 17);
+					sprintf(APs[index].ap_bssid, "%s", val);
 				else if(col == 2)
 					APs[index].ap_channel = atoi(val);
+
 			}
 
 			index++;
@@ -223,9 +224,9 @@ void select_client(struct FFA_client_info clnts[], struct FFA_AP_info conn_AP)
 				val = (const char *)sqlite3_column_text(stmt, col);
 
 				if(col == 0)
-					strncpy(clnts[index].conn_ap_bssid, val, 17);
+					sprintf(clnts[index].conn_ap_bssid, "%s", val);
 				else if(col == 1)
-					strncpy(clnts[index].client_bssid, val, 17);
+					sprintf(clnts[index].client_bssid, "%s", val);
 			}
 
 			index++;

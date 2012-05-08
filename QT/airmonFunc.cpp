@@ -9,8 +9,8 @@ void MainWindow::airmonFunc()
 {
 	static bool st = false;
 	QProcess *airmon = new QProcess();
-	QString airmon_start = "/home/letorika/Dev/FFA/QT/airmon-sh.sh";
-	QString airmon_stop = "/home/letorika/Dev/FFA/QT/airmon-ksh.sh";
+	QString airmon_start = "/home/sdw/FFA/QT/airmon-sh.sh";
+	QString airmon_stop = "/home/sdw/FFA/QT/airmon-ksh.sh";
 	QString path = argv_main[0];	
 
 	if(st)
