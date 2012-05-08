@@ -80,7 +80,7 @@ int execute_query(char *query, int (*callback)(void *, int, char **, char **), v
 	
 int insert_ap(struct FFA_AP_info AP)
 {
-	char query[297] = "insert into AP values(\"";
+	char query[299] = "insert into AP values(\"";
 	
 	int essid_len = strlen(AP.ap_essid);
 	int channel_len = strlen(itoa(AP.ap_channel));
@@ -94,9 +94,9 @@ int insert_ap(struct FFA_AP_info AP)
 	
 	strncat(query, itoa(AP.ap_channel), channel_len);
 	strcat(query, ")");
-
+	puts(query);
 	chk = execute_query(query, 0, 0);
-	
+	puts("query 1");
 	if(chk == -1) 
 	{
 		puts("insert_ap error");
@@ -182,7 +182,7 @@ int delete_ap()
 
 int insert_client(struct FFA_client_info client)
 {
-	char query[45] = "insert into client values(\"";
+	char query[46] = "insert into client values(\"";
 
 	int chk;
 

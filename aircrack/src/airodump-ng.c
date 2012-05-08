@@ -2824,8 +2824,6 @@ void dump_print( int ws_row, int ws_col, int if_num )
 	struct FFA_AP_info input_ap;
 	struct FFA_client_info input_client;
 
-	connect_db("FFA_test.db");
-
     if(!G.singlechan) columns_ap -= 4; //no RXQ in scan mode
 
     nlines = 2;
@@ -3023,15 +3021,20 @@ void dump_print( int ws_row, int ws_col, int if_num )
 		return;
 
 /*-------save ap info to db -------------*/
-		memset(input_ap.ap_essid, '\0', sizeof(input_ap.ap_essid));
-	
+		puts("debug 11");
+	//	memset(input_ap.ap_essid, '\0', sizeof(input_ap.ap_essid));
+		puts("debug 12");
 		snprintf(input_ap.ap_bssid, sizeof(input_ap.ap_bssid), "%c%c%c%c%c%c",
 			ap_cur->bssid[0], ap_cur->bssid[1], ap_cur->bssid[2],
-			ap_cur0>bssid[3]. ap-cur->bssid[4], ap_cur->bssid[5]);
-		snprintf(input_ap.ap_essid, sizeof(input_ap.ap_essid)-1, "%-256s", ap_cur->essid);
-		input_ap.ap_channel = ap_cur->channel;
+			ap_cur->bssid[3], ap_cur->bssid[4], ap_cur->bssid[5]);
 
+		puts("debug 13");
+		snprintf(input_ap.ap_essid, sizeof(input_ap.ap_essid)-1, "%-256s", ap_cur->essid);
+		puts("debug 14");
+		input_ap.ap_channel = ap_cur->channel;
+		puts("debug 15");
 		insert_ap(input_ap);
+		puts("debug 16");
 /*------------------------------------*/
 
 	    memset(strbuf, '\0', sizeof(strbuf));
@@ -3237,12 +3240,14 @@ void dump_print( int ws_row, int ws_col, int if_num )
 //-------save client info to db--------------------------------//
 		snprintf(input_client.conn_ap_bssid, sizeof(input_client.conn_ap_bssid), "%c%c%c%c%c%c",
 			ap_cur->bssid[0], ap_cur->bssid[1], ap_cur->bssid[2],
-			ap-cur->bssid[3], ap_cur->bssid[4], ap_cur->bssid[5]);
+			ap_cur->bssid[3], ap_cur->bssid[4], ap_cur->bssid[5]);
+		puts("debug 21");
 		snprintf(input_client.client_bssid, sizeof(input_client.client_bssid), "%c%c%c%c%c%c",
 			st_cur->stmac[0], st_cur->stmac[1], st_cur->stmac[2],
 			st_cur->stmac[3], st_cur->stmac[4], st_cur->stmac[5]);
-
+		puts("debug 22");
 		insert_client(input_client);
+		puts("debug 23");
 //-------------------------------------------------------------//
 
 		if( ! memcmp( ap_cur->bssid, BROADCAST, 6 ) )
@@ -3364,8 +3369,6 @@ void dump_print( int ws_row, int ws_col, int if_num )
             na_cur = na_cur->next;
         }
     }
-
-	close_db();
 }
 
 int dump_write_csv( void )
@@ -5264,6 +5267,10 @@ int main( int argc, char *argv[] )
     };
 
 
+	connect_db("testssibal.db");
+
+
+
 	pthread_mutex_init( &(G.mx_print), NULL );
     pthread_mutex_init( &(G.mx_sort), NULL );
 
@@ -6424,5 +6431,6 @@ usage:
     fprintf( stderr, "\33[?25h" );
     fflush( stdout );
 
+	close_db();
     return( 0 );
 }
