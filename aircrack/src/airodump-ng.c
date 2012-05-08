@@ -3025,8 +3025,10 @@ void dump_print( int ws_row, int ws_col, int if_num )
 /*-------save ap info to db -------------*/
 		memset(input_ap.ap_essid, '\0', sizeof(input_ap.ap_essid));
 	
-		snprintf(input_ap.ap_bssid, sizeof(ap_cur->bssid), "%s", ap_cur->bssid);
-		snprintf(input_ap.ap_essid, sizeof(ap_cur->essid), "%s", ap_cur->essid);
+		snprintf(input_ap.ap_bssid, sizeof(input_ap.ap_bssid), "%c%c%c%c%c%c",
+			ap_cur->bssid[0], ap_cur->bssid[1], ap_cur->bssid[2],
+			ap_cur0>bssid[3]. ap-cur->bssid[4], ap_cur->bssid[5]);
+		snprintf(input_ap.ap_essid, sizeof(input_ap.ap_essid)-1, "%-256s", ap_cur->essid);
 		input_ap.ap_channel = ap_cur->channel;
 
 		insert_ap(input_ap);
@@ -3233,8 +3235,12 @@ void dump_print( int ws_row, int ws_col, int if_num )
 		    return;
 
 //-------save client info to db--------------------------------//
-		snprintf(input_client.conn_ap_bssid, sizeof(ap_cur->bssid), "%s", ap_cur->bssid);
-		snprintf(input_client.client_bssid, sizeof(st_cur->stmac), "%s", st_cur->stmac);
+		snprintf(input_client.conn_ap_bssid, sizeof(input_client.conn_ap_bssid), "%c%c%c%c%c%c",
+			ap_cur->bssid[0], ap_cur->bssid[1], ap_cur->bssid[2],
+			ap-cur->bssid[3], ap_cur->bssid[4], ap_cur->bssid[5]);
+		snprintf(input_client.client_bssid, sizeof(input_client.client_bssid), "%c%c%c%c%c%c",
+			st_cur->stmac[0], st_cur->stmac[1], st_cur->stmac[2],
+			st_cur->stmac[3], st_cur->stmac[4], st_cur->stmac[5]);
 
 		insert_client(input_client);
 //-------------------------------------------------------------//
