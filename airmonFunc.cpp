@@ -10,9 +10,9 @@ void MainWindow::airmonFunc()
 	static bool st = false;
 	QProcess *airmon = new QProcess();
 	QProcess *airodump = new QProcess();
-	QString airmon_start = "/home/letorika/Dev/FFA/QT/airmon-sh.sh";
-	QString airmon_stop = "/home/letorika/Dev/FFA/QT/airmon-ksh.sh";
-	QString airodump_start = "/home/letorika/Dev/FFA/QT/airodump-sh.sh";
+	QString airmon_start = "/home/sdw/FFA/airmon-sh.sh";
+	QString airmon_stop = "/home/sdw/FFA/airmon-ksh.sh";
+	QString airodump_start = "/home/sdw/FFA/airodump-sh.sh";
 	QString path = argv_main[0];	
 
 	if(st)
