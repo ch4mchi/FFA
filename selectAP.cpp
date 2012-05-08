@@ -17,11 +17,14 @@ void MainWindow::selectAP()
 	sprintf(selected_ap.ap_essid,"%s", g_essid.toStdString().c_str());
 	sprintf(selected_ap.ap_bssid,"%s", g_bssid.toStdString().c_str());
 	selected_ap.ap_channel = g_c.toInt();
-	
+	QMessageBox::warning(NULL,"Asdf",selected_ap.ap_essid);
+
+
 	for (int i = ui->tableClient->rowCount()-1 ; i>=0 ; i--)
 		ui->tableClient->removeRow(i);
-	connect_db("FFA_.db");
+
 	row_num = get_select_client_count(selected_ap);
+	QMessageBox::warning(NULL,"Asdf",QString::number(row_num));
 	client_tuples = (struct FFA_client_info*)malloc(sizeof(struct FFA_client_info)*row_num);
 	select_client(client_tuples, selected_ap);
 	
@@ -30,7 +33,6 @@ void MainWindow::selectAP()
 		ui->tableClient->setItem(i, 0, new QTableWidgetItem(client_tuples[i].conn_ap_bssid));
 		ui->tableClient->setItem(i, 1, new QTableWidgetItem(client_tuples[i].client_bssid));
 	}
-	close_db();
 /*
 	switch(currentRow)
 	{

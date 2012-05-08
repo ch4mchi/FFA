@@ -27,7 +27,7 @@ void MainWindow::airmonFunc()
 		st = false;
 //		close_db();
 		QMessageBox::warning(NULL,"adsf",airmon_stop);
-		airmon->start(airmon_stop);
+//		airmon->start(airmon_stop);
 	}
 	else
 	{
@@ -36,7 +36,7 @@ void MainWindow::airmonFunc()
 		ui->airmonStatus->setText("<font size=5 color=green>On</font>");
 
 		QMessageBox::warning(NULL,"adsf",airmon_start);
-		airmon->start(airmon_start);
+//		airmon->start(airmon_start);
 		sleep(5);
 //		connect_db("FFA_.db");
 		initTable();
