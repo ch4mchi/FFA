@@ -1,23 +1,5 @@
 #include "FFA_sqlite3.h"
 
-char *itoa(int n)
-{
-	char *str_n;
-
-	if(n >= 10)
-	{
-		str_n = (char*)malloc(2*sizeof(char));
-		sprintf(str_n, "%d", n);
-	}
-	else
-	{
-		str_n = (char*)malloc(sizeof(char));
-		sprintf(str_n, "%d", n);
-	}
-	
-	return str_n;
-}
-
 int connect_db(char *db_name)
 {
 	int chk;
@@ -80,35 +62,24 @@ int execute_query(char *query, int (*callback)(void *, int, char **, char **), v
 	
 int insert_ap(struct FFA_AP_info AP)
 {
-	char query[309] = "insert into AP values(\"";
-	
-	int essid_len = strlen(AP.ap_essid);
-	int channel_len = strlen(itoa(AP.ap_channel));
 	int chk;
-	
-	strncat(query, AP.ap_essid, essid_len);
-	strcat(query, "\", \"");
+	char query[309];
 
-	strncat(query, AP.ap_bssid, 17);
-	strcat(query, "\", ");
-	
-	strncat(query, itoa(AP.ap_channel), channel_len);
-	strcat(query, ")\0");
+	sprintf(query, "insert into AP values(\"%s\", \"%s\", %d)", AP.ap_essid, AP.ap_bssid, AP.ap_channel);
 
-	chk = execute_query(query, 0, 0);
-	
-	if(chk == -1) 
+	chk = execute_query(query, 0 ,0);
+	if(chk == -1)
 	{
-		puts("insert_ap error");
+		puts("insert ap error");
 		return -1;
 	}
-	
+
 	return 0;
 }
 
 int get_select_ap_count()
 {
-	int rows, cols, num;
+	int rows, cols;
 	int ret;
 	char **res;
 	char *query = sqlite3_mprintf("select * from AP");
@@ -128,7 +99,6 @@ int get_select_ap_count()
 
 void select_ap(struct FFA_AP_info *APs)
 {
-	int chk;
 	int retval;
 	int cols, col;
 	int index = 0;
@@ -183,15 +153,10 @@ int delete_ap()
 
 int insert_client(struct FFA_client_info client)
 {
-	char query[68] = "insert into client values(\"";
-
+	char query[68];
 	int chk;
 
-	strncat(query, client.conn_ap_bssid, 17);
-	strcat(query, "\", \"");
-
-	strncat(query, client.client_bssid, 17);
-	strcat(query, "\")\0");
+	sprintf(query, "insert into client values(\"%s\", \"%s\")", client.conn_ap_bssid, client.client_bssid);	
 
 	chk = execute_query(query, 0, 0);
 
@@ -206,14 +171,13 @@ int insert_client(struct FFA_client_info client)
 
 int get_select_client_count(struct FFA_AP_info conn_AP)
 {
-	int rows, cols, num;
+	int rows, cols;
 	int ret;
 	char **res;
 	char *zQuery;
-	char query[93] = "select distinct client.* from client JOIN AP where client.conn_ap_bssid = \"";
-	
-	strncat(query, conn_AP.ap_bssid, 17);
-	strcat(query, "\"");
+	char query[93];
+
+	sprintf(query, "select distinct client.* from client JOIN AP where client.conn_ap_bssid = \"%s\"", conn_AP.ap_bssid);
 	
 	zQuery = sqlite3_mprintf(query);
 	ret = sqlite3_get_table(db, zQuery, &res, &rows, &cols, &ErrMsg);
@@ -231,15 +195,13 @@ int get_select_client_count(struct FFA_AP_info conn_AP)
 
 void select_client(struct FFA_client_info clnts[], struct FFA_AP_info conn_AP)
 {
-	int chk;
 	int retval;
 	int cols, col;
 	int index = 0;
 	const char *val;
-	char query[93] = "select distinct client.* from client JOIN AP where client.conn_ap_bssid = \"";
+	char query[93];
 
-	strncat(query, conn_AP.ap_bssid, 17);
-	strcat(query, "\"");
+	sprintf(query, "select distinct client.* from client JOIN AP where client.conn_ap_bssid = \"%s\"", conn_AP.ap_bssid);
 
 	retval = sqlite3_prepare_v2(db, query, -1, &stmt, 0);
 	if(retval)
