@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Tue May 8 04:30:38 2012
+** Created: Tue May 8 10:50:45 2012
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -171,14 +171,6 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
         btn1->setText(QApplication::translate("MainWindow", "Show Info", 0, QApplication::UnicodeUTF8));
-        comboBox->clear();
-        comboBox->insertItems(0, QStringList()
-         << QApplication::translate("MainWindow", "ASDF", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("MainWindow", "SDFG", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("MainWindow", "WEWB", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("MainWindow", "QGEW", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("MainWindow", "Awkenv", 0, QApplication::UnicodeUTF8)
-        );
         btn2->setText(QApplication::translate("MainWindow", "About", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = tableAP->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("MainWindow", "Name", 0, QApplication::UnicodeUTF8));

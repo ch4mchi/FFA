@@ -25,7 +25,7 @@ void MainWindow::airmonFunc()
 		ui->airmonBtn->setText("Turn On");
 		ui->airmonStatus->setText("<font size=5 color=red>Off</font>");
 		st = false;
-		close_db();
+//		close_db();
 		QMessageBox::warning(NULL,"adsf",airmon_stop);
 		airmon->start(airmon_stop);
 	}
@@ -38,8 +38,8 @@ void MainWindow::airmonFunc()
 		QMessageBox::warning(NULL,"adsf",airmon_start);
 		airmon->start(airmon_start);
 		sleep(5);
+//		connect_db("FFA_.db");
 		initTable();
-		connect_db("test22.db");
 		st = true;
 	}
 }

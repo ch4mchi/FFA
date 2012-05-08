@@ -1,13 +1,37 @@
 #include "mainwindow.h"
 #include "FunctionList.h"
+#include <QString>
 
 void MainWindow::selectAP()
 {
-	int i;
+	struct FFA_AP_info selected_ap;
+	struct FFA_client_info *client_tuples;
+	int row_num;
+	int i;	
 	int currentRow = ui->tableAP->selectionModel()->currentIndex().row();
 	int currentColumn = ui->tableAP->selectionModel()->currentIndex().column();
+	QString g_essid = ui->tableAP->item(currentRow, 0)->text();
+	QString g_bssid = ui->tableAP->item(currentRow, 1)->text();
+	QString g_c = ui->tableAP->item(currentRow, 2)->text();
+
+	sprintf(selected_ap.ap_essid,"%s", g_essid.toStdString().c_str());
+	sprintf(selected_ap.ap_bssid,"%s", g_bssid.toStdString().c_str());
+	selected_ap.ap_channel = g_c.toInt();
+	
 	for (int i = ui->tableClient->rowCount()-1 ; i>=0 ; i--)
 		ui->tableClient->removeRow(i);
+	connect_db("FFA_.db");
+	row_num = get_select_client_count(selected_ap);
+	client_tuples = (struct FFA_client_info*)malloc(sizeof(struct FFA_client_info)*row_num);
+	select_client(client_tuples, selected_ap);
+	
+	for(i = 0 ; i < row_num ; i++){
+		ui->tableClient->insertRow(i);
+		ui->tableClient->setItem(i, 0, new QTableWidgetItem(client_tuples[i].conn_ap_bssid));
+		ui->tableClient->setItem(i, 1, new QTableWidgetItem(client_tuples[i].client_bssid));
+	}
+	close_db();
+/*
 	switch(currentRow)
 	{
 	case 0:
@@ -32,6 +56,7 @@ void MainWindow::selectAP()
 		ui->tableClient->setItem(0, 1, new QTableWidgetItem("AP Num: "+QString::number(currentRow)));
 		break;
 	}
+*/
 	ui->deauthClnt->setDisabled(true);
 	ui->deauthAll->setEnabled(true);
 	ui->tableClient->setEnabled(true);
