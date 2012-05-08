@@ -17,14 +17,11 @@ void MainWindow::selectAP()
 	sprintf(selected_ap.ap_essid,"%s", g_essid.toStdString().c_str());
 	sprintf(selected_ap.ap_bssid,"%s", g_bssid.toStdString().c_str());
 	selected_ap.ap_channel = g_c.toInt();
-	QMessageBox::warning(NULL,"Asdf",selected_ap.ap_essid);
-
 
 	for (int i = ui->tableClient->rowCount()-1 ; i>=0 ; i--)
 		ui->tableClient->removeRow(i);
 
 	row_num = get_select_client_count(selected_ap);
-	QMessageBox::warning(NULL,"Asdf",QString::number(row_num));
 	client_tuples = (struct FFA_client_info*)malloc(sizeof(struct FFA_client_info)*row_num);
 	select_client(client_tuples, selected_ap);
 	
@@ -62,4 +59,6 @@ void MainWindow::selectAP()
 	ui->deauthClnt->setDisabled(true);
 	ui->deauthAll->setEnabled(true);
 	ui->tableClient->setEnabled(true);
+	memset(client_tuples,'\0',sizeof(client_tuples));
+	free(client_tuples);
 }
