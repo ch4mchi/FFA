@@ -16,7 +16,7 @@ CXXFLAGS      = -pipe -g -Wall -W -D_REENTRANT $(DEFINES)
 INCPATH       = -I/usr/share/qt4/mkspecs/linux-g++ -I. -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I.
 LINK          = g++
 LFLAGS        = 
-LIBS          = $(SUBLIBS)  -L/usr/lib -lQtGui -lQtCore -lpthread 
+LIBS          = $(SUBLIBS)  -L/usr/lib -L/usr/local/lib -lsqlite3 -lQtGui -lQtCore -lpthread 
 AR            = ar cqs
 RANLIB        = 
 QMAKE         = /usr/bin/qmake-qt4
@@ -44,7 +44,7 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = main.cpp \
-		mainwindow.cpp moc_mainwindow.cpp
+		mainwindow.cpp moc_mainwindow.cpp 
 OBJECTS       = main.o \
 		mainwindow.o \
 		moc_mainwindow.o
@@ -147,7 +147,7 @@ qmake:  FORCE
 
 dist: 
 	@$(CHK_DIR_EXISTS) .tmp/FFA1.0.0 || $(MKDIR) .tmp/FFA1.0.0 
-	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/FFA1.0.0/ && $(COPY_FILE) --parents mainwindow.h FunctionList.h .tmp/FFA1.0.0/ && $(COPY_FILE) --parents main.cpp mainwindow.cpp .tmp/FFA1.0.0/ && $(COPY_FILE) --parents mainwindow.ui .tmp/FFA1.0.0/ && (cd `dirname .tmp/FFA1.0.0` && $(TAR) FFA1.0.0.tar FFA1.0.0 && $(COMPRESS) FFA1.0.0.tar) && $(MOVE) `dirname .tmp/FFA1.0.0`/FFA1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/FFA1.0.0
+	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/FFA1.0.0/ && $(COPY_FILE) --parents mainwindow.h FunctionList.h FFA_sqlite3.h .tmp/FFA1.0.0/ && $(COPY_FILE) --parents main.cpp mainwindow.cpp .tmp/FFA1.0.0/ && $(COPY_FILE) --parents mainwindow.ui .tmp/FFA1.0.0/ && (cd `dirname .tmp/FFA1.0.0` && $(TAR) FFA1.0.0.tar FFA1.0.0 && $(COMPRESS) FFA1.0.0.tar) && $(MOVE) `dirname .tmp/FFA1.0.0`/FFA1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/FFA1.0.0
 
 
 clean:compiler_clean 
@@ -203,6 +203,8 @@ main.o: main.cpp mainwindow.h \
 mainwindow.o: mainwindow.cpp mainwindow.h \
 		ui_mainwindow.h \
 		FunctionList.h \
+		FFA_sqlite3.h \
+		FFA_sqlite3.c \
 		airmonFunc.cpp \
 		airbaseFunc.cpp \
 		deauthAllFunc.cpp \

@@ -1,5 +1,6 @@
 #ifndef FUNCTIONLIST_H
 #define FUNCTIONLIST_H
+#include "FFA_sqlite3.c"
 #include "airmonFunc.cpp"
 #include "airbaseFunc.cpp"
 #include "deauthAllFunc.cpp"

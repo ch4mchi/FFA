@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "FunctionList.h"
+//#include "FFA_sqlite3.h"
 #include <QProcess>
 #include <QString>
 
@@ -23,7 +24,7 @@ void MainWindow::airmonFunc()
 		ui->airmonBtn->setText("Turn On");
 		ui->airmonStatus->setText("<font size=5 color=red>Off</font>");
 		st = false;
-
+		close_db();
 		QMessageBox::warning(NULL,"adsf",airmon_stop);
 		airmon->start(airmon_stop);
 	}
@@ -36,7 +37,7 @@ void MainWindow::airmonFunc()
 		QMessageBox::warning(NULL,"adsf",airmon_start);
 		airmon->start(airmon_start);
 		initTable();
-
+		connect_db("test22.db");
 		st = true;
 	}
 }

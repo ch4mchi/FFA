@@ -108,7 +108,7 @@ int insert_ap(struct FFA_AP_info AP)
 
 int get_select_ap_count()
 {
-	int rows, cols, num;
+	int rows, cols;
 	int ret;
 	char **res;
 	char *query = sqlite3_mprintf("select * from AP");
@@ -128,7 +128,6 @@ int get_select_ap_count()
 
 void select_ap(struct FFA_AP_info *APs)
 {
-	int chk;
 	int retval;
 	int cols, col;
 	int index = 0;
@@ -159,7 +158,6 @@ void select_ap(struct FFA_AP_info *APs)
 					strncpy(APs[index].ap_bssid, val, 7);
 				else if(col == 2)
 					APs[index].ap_channel = atoi(val);
-				else ;
 			}
 
 			index++;
@@ -207,7 +205,7 @@ int insert_client(struct FFA_client_info client)
 
 int get_select_client_count(struct FFA_AP_info conn_AP)
 {
-	int rows, cols, num;
+	int rows, cols;
 	int ret;
 	char **res;
 	char *zQuery;
@@ -232,7 +230,6 @@ int get_select_client_count(struct FFA_AP_info conn_AP)
 
 void select_client(struct FFA_client_info clnts[], struct FFA_AP_info conn_AP)
 {
-	int chk;
 	int retval;
 	int cols, col;
 	int index = 0;
@@ -265,7 +262,6 @@ void select_client(struct FFA_client_info clnts[], struct FFA_AP_info conn_AP)
 					strncpy(clnts[index].conn_ap_bssid, val, 7);
 				else if(col == 1)
 					strncpy(clnts[index].client_bssid, val, 7);
-				else ;
 			}
 
 			index++;
