@@ -9,7 +9,7 @@ void MainWindow::airmonFunc()
 {
 	static bool st = false;
 	QProcess *airmon = new QProcess();
-//	QProcess *airodump = new QProcess();
+	QProcess *airodump = new QProcess();
 	QString airmon_start = "/home/letorika/Dev/FFA/QT/airmon-sh.sh";
 	QString airmon_stop = "/home/letorika/Dev/FFA/QT/airmon-ksh.sh";
 	QString airodump_start = "/home/letorika/Dev/FFA/QT/airodump-sh.sh";
@@ -25,9 +25,10 @@ void MainWindow::airmonFunc()
 		ui->airmonBtn->setText("Turn On");
 		ui->airmonStatus->setText("<font size=5 color=red>Off</font>");
 		st = false;
-//		close_db();
+		close_db();
 		QMessageBox::warning(NULL,"adsf",airmon_stop);
-//		airmon->start(airmon_stop);
+		airodump->close();
+		airmon->start("airmon stop mon0");
 	}
 	else
 	{
@@ -36,9 +37,10 @@ void MainWindow::airmonFunc()
 		ui->airmonStatus->setText("<font size=5 color=green>On</font>");
 
 		QMessageBox::warning(NULL,"adsf",airmon_start);
-//		airmon->start(airmon_start);
-		sleep(5);
-//		connect_db("FFA_.db");
+		airmon->start("airmon start wlan0");
+		sleep(3);
+		airodump->start(airodump_start);
+		connect_db("FFA_.db");
 		initTable();
 		st = true;
 	}

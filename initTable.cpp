@@ -11,10 +11,6 @@ void MainWindow::initTable()
 	numRef ++;
 	ui->tableAP->setEnabled(true);
 
-	chksum = connect_db("FFA_.db");
-	if(chksum)
-		QMessageBox::warning(NULL,"DB error","DB connection fail");
-
 	for (int i = ui->tableAP->rowCount()-1 ; i>=0 ; i--)
 		ui->tableAP->removeRow(i);
 	for (int i = ui->tableClient->rowCount()-1 ; i>=0 ; i--)
@@ -34,5 +30,4 @@ void MainWindow::initTable()
 	ui->tableClient->setItem(0, 0, new QTableWidgetItem("(None)"));
 	ui->tableClient->setItem(0, 1, new QTableWidgetItem("Select AP First!"));
 	
-	close_db();
 }
