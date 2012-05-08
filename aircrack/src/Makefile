@@ -15,6 +15,8 @@ BINFILES        = aircrack-ng$(EXE) airdecap-ng$(EXE) packetforge-ng$(EXE) \
 		  ivstools$(EXE) kstats$(EXE) makeivs-ng$(EXE) \
 		  airdecloak-ng$(EXE)
 
+SQLITE		= true
+
 ifeq ($(SQLITE), true)
 	BINFILES	+= airolib-ng$(EXE)
 else
@@ -152,7 +154,7 @@ aireplay-ng$(EXE): $(OBJS_AR) $(LIBOSD)
 	$(CC) $(CFLAGS) $(OBJS_AR) -o $(@) $(LIBS) $(LIBSSL)
 
 airodump-ng$(EXE): $(OBJS_ADU) $(LIBOSD)
-	$(CC) $(CFLAGS) $(OBJS_ADU) -o $(@) $(LIBS) $(LIBSSL) -lpthread -L/usr/local/lib -lsqlite3
+	$(CC) $(CFLAGS) $(OBJS_ADU) -o $(@) $(LIBS) $(LIBSSL) $(LIBSQL) -lpthread
 
 airserv-ng$(EXE): $(OBJS_AS) $(LIBOSD)
 	$(CC) $(CFLAGS) $(OBJS_AS) -o $(@) $(LIBS) $(LIBPCAP)

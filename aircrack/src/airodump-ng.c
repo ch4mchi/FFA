@@ -69,6 +69,8 @@
 #include "osdep/common.h"
 #include "common.h"
 
+#include "FFA_sqlite3.h"
+
 void dump_sort( void );
 void dump_print( int ws_row, int ws_col, int if_num );
 
