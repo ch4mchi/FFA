@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	ui->comboBox->addItem(tr("asdf"));
 
-	ui->tableAP->setSortingEnabled(true);
+	//ui->tableAP->setSortingEnabled(true);
 	ui->tableAP->setSelectionBehavior(QAbstractItemView::SelectRows);
 	ui->tableAP->horizontalHeader()->setStretchLastSection(true);
 	ui->tableAP->verticalHeader()->hide();
@@ -31,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->tableAP->horizontalHeader()->resizeSection(1, 160);
 	ui->tableAP->horizontalHeader()->resizeSection(2, 40);
 
-	ui->tableClient->setSortingEnabled(true);
+	//ui->tableClient->setSortingEnabled(true);
 	ui->tableClient->setSelectionBehavior(QAbstractItemView::SelectRows);
 	ui->tableClient->horizontalHeader()->setStretchLastSection(true);
 	ui->tableClient->verticalHeader()->hide();

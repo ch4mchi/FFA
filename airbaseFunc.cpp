@@ -15,6 +15,12 @@ void MainWindow::airbaseFunc()
 		ui->airbaseBtn->setText("Turn Off");
 		ui->essidBox->setDisabled(true);
 		st = true;
-		QMessageBox::information(NULL, "Airbase","Airbase Activated.\n\nESSID is: "+ui->essidBox->text());
+
+		QProcess *airbase = new QProcess();
+		QString airbase_addr = APP_CURRENT_PATH
+					.append("/airbase-sh.sh").append(" ")
+					.append(ui->essidBox->text());
+		QMessageBox::information(NULL, "Command is: ", airbase_addr);
+		airbase->start(airbase_addr);
 	}
 }

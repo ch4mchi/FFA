@@ -3,12 +3,10 @@
 
 void MainWindow::initTable()
 {
-	static int numRef = 0;
 	struct FFA_AP_info *ap_tuples;
 	int chksum;
 	int low_num;
 
-	numRef ++;
 	ui->tableAP->setEnabled(true);
 
 	for (int i = ui->tableAP->rowCount()-1 ; i>=0 ; i--)
@@ -28,6 +26,5 @@ void MainWindow::initTable()
 	}
 	ui->tableClient->insertRow(0);
 	ui->tableClient->setItem(0, 0, new QTableWidgetItem("(None)"));
-	ui->tableClient->setItem(0, 1, new QTableWidgetItem("Select AP First!"));
-	
+	ui->tableClient->setItem(0, 1, new QTableWidgetItem("Select AP First!"));	
 }
