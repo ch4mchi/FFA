@@ -176,10 +176,10 @@ int get_select_client_count(struct FFA_AP_info conn_AP)
 	int ret;
 	char **res;
 	char *zQuery;
-	char query[93];
+	char query[100];
 
 	sprintf(query, "select distinct client.* from client JOIN AP where client.conn_ap_bssid = \"%s\"", conn_AP.ap_bssid);
-	
+
 	zQuery = sqlite3_mprintf(query);
 	ret = sqlite3_get_table(db, zQuery, &res, &rows, &cols, &ErrMsg);
 	sqlite3_free(zQuery);
@@ -200,7 +200,7 @@ void select_client(struct FFA_client_info clnts[], struct FFA_AP_info conn_AP)
 	int cols, col;
 	int index = 0;
 	const char *val;
-	char query[93];
+	char query[100];
 
 	sprintf(query, "select distinct client.* from client JOIN AP where client.conn_ap_bssid = \"%s\"", conn_AP.ap_bssid);
 

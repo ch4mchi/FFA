@@ -17,11 +17,12 @@ void MainWindow::selectAP()
 	sprintf(selected_ap.ap_essid,"%s", g_essid.toStdString().c_str());
 	sprintf(selected_ap.ap_bssid,"%s", g_bssid.toStdString().c_str());
 	selected_ap.ap_channel = g_c.toInt();
-
+	
 	for (int i = ui->tableClient->rowCount()-1 ; i>=0 ; i--)
 		ui->tableClient->removeRow(i);
 
 	row_num = get_select_client_count(selected_ap);
+
 	client_tuples = (struct FFA_client_info*)malloc(sizeof(struct FFA_client_info)*row_num);
 	select_client(client_tuples, selected_ap);
 	

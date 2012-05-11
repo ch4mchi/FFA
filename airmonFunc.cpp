@@ -2,7 +2,8 @@
 #include "FunctionList.h"
 #include <QProcess>
 #include <QString>
-
+#include <QCoreApplication>
+#define APP_CURRENT_PATH QCoreApplication::applicationDirPath()
 extern char **argv_main;
 
 void MainWindow::airmonFunc()
@@ -10,9 +11,13 @@ void MainWindow::airmonFunc()
 	static bool st = false;
 	QProcess *airmon = new QProcess();
 	QProcess *airodump = new QProcess();
-	QString airmon_start = "/home/sdw/FFA/airmon-sh.sh";
-	QString airmon_stop = "/home/sdw/FFA/airmon-ksh.sh";
-	QString airodump_start = "/home/sdw/FFA/airodump-sh.sh";
+	QString currentPath = QCoreApplication::applicationDirPath();
+	QString airmon_start = APP_CURRENT_PATH
+				.append("/airmon-sh.sh");
+	QString airmon_stop = APP_CURRENT_PATH
+				.append("/airmon-ksh.sh");
+	QString airodump_start = APP_CURRENT_PATH
+				.append("/airodump-sh.sh");
 	QString path = argv_main[0];	
 
 	if(st)
@@ -26,7 +31,7 @@ void MainWindow::airmonFunc()
 		ui->airmonStatus->setText("<font size=5 color=red>Off</font>");
 		st = false;
 		close_db();
-		QMessageBox::warning(NULL,"adsf",airmon_stop);
+		QMessageBox::warning(NULL,"asdf",airmon_stop);
 		airodump->close();
 		airmon->start(airmon_stop);
 	}
