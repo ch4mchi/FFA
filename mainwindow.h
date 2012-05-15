@@ -10,6 +10,7 @@
 #include <QTableView>
 #include <QTabWidget>
 #include <QComboBox>
+#include <QTimer>
 #include "ui_mainwindow.h"
 
 namespace Ui {
@@ -23,6 +24,7 @@ public:
 	~MainWindow();
 public slots:
 	void showBitchbox();
+	void onTimer();
 	void TotheBox();
 	void initTable();
 	void airmonFunc();

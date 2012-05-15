@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	QObject::connect(ui->closeBtn, SIGNAL(clicked()), this, SLOT(close()));
 
 	ui->comboBox->addItem(tr("asdf"));
+	ui->progressBar->setVisible(false);
 
 	//ui->tableAP->setSortingEnabled(true);
 	ui->tableAP->setSelectionBehavior(QAbstractItemView::SelectRows);

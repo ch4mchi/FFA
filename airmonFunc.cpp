@@ -5,7 +5,8 @@
 #include <QCoreApplication>
 #define APP_CURRENT_PATH QCoreApplication::applicationDirPath()
 extern char **argv_main;
-
+int cnt;
+QTimer *timer;
 void MainWindow::airmonFunc()
 {
 	static bool st = false;
@@ -18,8 +19,7 @@ void MainWindow::airmonFunc()
 				.append("/airmon-ksh.sh");
 	QString airodump_start = APP_CURRENT_PATH
 				.append("/airodump-sh.sh");
-	QString path = argv_main[0];	
-
+	QString path = argv_main[0];
 	if(st)
 	{
 		ui->tableAP->setDisabled(true);
@@ -37,16 +37,36 @@ void MainWindow::airmonFunc()
 	}
 	else
 	{
-		ui->refreshBtn->setEnabled(true);
+		st = true;
+		cnt = 0;
+		timer = new QTimer();
+		connect(timer, SIGNAL(timeout()),this, SLOT(onTimer()));
+		ui->tableAP->setDisabled(true);
+		ui->tableClient->setDisabled(true);
+		ui->progressBar->setVisible(true);
 		ui->airmonBtn->setText("Turn Off");
-		ui->airmonStatus->setText("<font size=5 color=green>On</font>");
-
-		QMessageBox::warning(NULL,"adsf",airmon_start);
+		ui->airmonBtn->setDisabled(true);
+		ui->airmonStatus->setText("<font size=5 color=skyblue>Wait</font>");
+		timer->start(0);
+		//QMessageBox::warning(NULL,"adsf",airmon_start);
 		airmon->start(airmon_start);
 		sleep(3);
 		airodump->start(airodump_start);
 		connect_db("FFA_.db");
 		initTable();
-		st = true;
+	}
+}
+
+void MainWindow::onTimer()
+{
+	cnt++;
+	ui->progressBar->setValue(cnt/50);
+	if(cnt==500000)
+	{
+		timer->stop();
+		ui->progressBar->setVisible(false);
+		ui->refreshBtn->setEnabled(true);
+		ui->airmonBtn->setEnabled(true);
+		ui->airmonStatus->setText("<font size=5 color=green>On</font>");
 	}
 }

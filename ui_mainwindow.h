@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Fri May 11 11:13:04 2012
+** Created: Tue May 15 10:16:41 2012
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -20,6 +20,7 @@
 #include <QtGui/QLineEdit>
 #include <QtGui/QMainWindow>
 #include <QtGui/QMenuBar>
+#include <QtGui/QProgressBar>
 #include <QtGui/QPushButton>
 #include <QtGui/QStatusBar>
 #include <QtGui/QTableWidget>
@@ -50,6 +51,7 @@ public:
     QLineEdit *essidBox;
     QLabel *label_5;
     QPushButton *closeBtn;
+    QProgressBar *progressBar;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -150,6 +152,11 @@ public:
         closeBtn = new QPushButton(centralWidget);
         closeBtn->setObjectName(QString::fromUtf8("closeBtn"));
         closeBtn->setGeometry(QRect(740, 370, 93, 27));
+        progressBar = new QProgressBar(centralWidget);
+        progressBar->setObjectName(QString::fromUtf8("progressBar"));
+        progressBar->setGeometry(QRect(360, 50, 118, 23));
+        progressBar->setMaximum(10000);
+        progressBar->setValue(24);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
