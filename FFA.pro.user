@@ -72,7 +72,7 @@
   <valuemap type="QVariantMap">
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Debug</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList">
-    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-2s4aQ893gF,guid=6e215f81ebb7c9a15f11287b4face5da</value>
+    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-OK03JBMkya,guid=0b404139a52511b2ff6784884fb394ba</value>
     <value type="QString">DEFAULTS_PATH=/usr/share/gconf/gnome.default.path</value>
     <value type="QString">DESKTOP_SESSION=gnome</value>
     <value type="QString">DISPLAY=:0.0</value>
@@ -80,8 +80,8 @@
     <value type="QString">GDM_KEYBOARD_LAYOUT=us</value>
     <value type="QString">GDM_LANG=en_US.UTF-8</value>
     <value type="QString">GNOME_DESKTOP_SESSION_ID=this-is-deprecated</value>
-    <value type="QString">GNOME_KEYRING_CONTROL=/tmp/keyring-zagnkU</value>
-    <value type="QString">GNOME_KEYRING_PID=1650</value>
+    <value type="QString">GNOME_KEYRING_CONTROL=/tmp/keyring-YsEgSR</value>
+    <value type="QString">GNOME_KEYRING_PID=1678</value>
     <value type="QString">GTK_MODULES=canberra-gtk-module</value>
     <value type="QString">HOME=/home/jaesang</value>
     <value type="QString">LANG=en_US.UTF-8</value>
@@ -92,17 +92,17 @@
     <value type="QString">PATH=/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games</value>
     <value type="QString">PWD=/home/jaesang</value>
     <value type="QString">QTDIR=/usr/share/qt4</value>
-    <value type="QString">SESSION_MANAGER=local/ubuntu:@/tmp/.ICE-unix/1668,unix/ubuntu:/tmp/.ICE-unix/1668</value>
+    <value type="QString">SESSION_MANAGER=local/ubuntu:@/tmp/.ICE-unix/1696,unix/ubuntu:/tmp/.ICE-unix/1696</value>
     <value type="QString">SHELL=/bin/bash</value>
     <value type="QString">SPEECHD_PORT=7560</value>
-    <value type="QString">SSH_AGENT_PID=1702</value>
-    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-zagnkU/ssh</value>
+    <value type="QString">SSH_AGENT_PID=1730</value>
+    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-YsEgSR/ssh</value>
     <value type="QString">USER=jaesang</value>
     <value type="QString">USERNAME=jaesang</value>
-    <value type="QString">XAUTHORITY=/var/run/gdm/auth-for-jaesang-W2lAao/database</value>
+    <value type="QString">XAUTHORITY=/var/run/gdm/auth-for-jaesang-pWCdUF/database</value>
     <value type="QString">XDG_CONFIG_DIRS=/etc/xdg/xdg-gnome:/etc/xdg</value>
     <value type="QString">XDG_DATA_DIRS=/usr/share/gnome:/usr/local/share/:/usr/share/</value>
-    <value type="QString">XDG_SESSION_COOKIE=bba36e980b5d49e339b6e08f4f68a2c7-1336731097.810820-957137720</value>
+    <value type="QString">XDG_SESSION_COOKIE=bba36e980b5d49e339b6e08f4f68a2c7-1337169082.737246-1302345605</value>
    </valuelist>
    <valuelist key="abstractProcess.arguments" type="QVariantList">
     <value type="QString">/home/jaesang/FFA/FFA.pro</value>
@@ -112,7 +112,7 @@
     <value type="QString">CONFIG+=debug</value>
    </valuelist>
    <value key="abstractProcess.command" type="QString">/usr/bin/qmake-qt4</value>
-   <value key="abstractProcess.enabled" type="bool">false</value>
+   <value key="abstractProcess.enabled" type="bool">true</value>
    <value key="abstractProcess.workingDirectory" type="QString">/home/jaesang/FFA</value>
   </valuemap>
  </data>
@@ -121,7 +121,7 @@
   <valuemap type="QVariantMap">
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Debug</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList">
-    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-2s4aQ893gF,guid=6e215f81ebb7c9a15f11287b4face5da</value>
+    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-OK03JBMkya,guid=0b404139a52511b2ff6784884fb394ba</value>
     <value type="QString">DEFAULTS_PATH=/usr/share/gconf/gnome.default.path</value>
     <value type="QString">DESKTOP_SESSION=gnome</value>
     <value type="QString">DISPLAY=:0.0</value>
@@ -129,8 +129,8 @@
     <value type="QString">GDM_KEYBOARD_LAYOUT=us</value>
     <value type="QString">GDM_LANG=en_US.UTF-8</value>
     <value type="QString">GNOME_DESKTOP_SESSION_ID=this-is-deprecated</value>
-    <value type="QString">GNOME_KEYRING_CONTROL=/tmp/keyring-zagnkU</value>
-    <value type="QString">GNOME_KEYRING_PID=1650</value>
+    <value type="QString">GNOME_KEYRING_CONTROL=/tmp/keyring-YsEgSR</value>
+    <value type="QString">GNOME_KEYRING_PID=1678</value>
     <value type="QString">GTK_MODULES=canberra-gtk-module</value>
     <value type="QString">HOME=/home/jaesang</value>
     <value type="QString">LANG=en_US.UTF-8</value>
@@ -141,17 +141,17 @@
     <value type="QString">PATH=/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games</value>
     <value type="QString">PWD=/home/jaesang</value>
     <value type="QString">QTDIR=/usr/share/qt4</value>
-    <value type="QString">SESSION_MANAGER=local/ubuntu:@/tmp/.ICE-unix/1668,unix/ubuntu:/tmp/.ICE-unix/1668</value>
+    <value type="QString">SESSION_MANAGER=local/ubuntu:@/tmp/.ICE-unix/1696,unix/ubuntu:/tmp/.ICE-unix/1696</value>
     <value type="QString">SHELL=/bin/bash</value>
     <value type="QString">SPEECHD_PORT=7560</value>
-    <value type="QString">SSH_AGENT_PID=1702</value>
-    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-zagnkU/ssh</value>
+    <value type="QString">SSH_AGENT_PID=1730</value>
+    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-YsEgSR/ssh</value>
     <value type="QString">USER=jaesang</value>
     <value type="QString">USERNAME=jaesang</value>
-    <value type="QString">XAUTHORITY=/var/run/gdm/auth-for-jaesang-W2lAao/database</value>
+    <value type="QString">XAUTHORITY=/var/run/gdm/auth-for-jaesang-pWCdUF/database</value>
     <value type="QString">XDG_CONFIG_DIRS=/etc/xdg/xdg-gnome:/etc/xdg</value>
     <value type="QString">XDG_DATA_DIRS=/usr/share/gnome:/usr/local/share/:/usr/share/</value>
-    <value type="QString">XDG_SESSION_COOKIE=bba36e980b5d49e339b6e08f4f68a2c7-1336731097.810820-957137720</value>
+    <value type="QString">XDG_SESSION_COOKIE=bba36e980b5d49e339b6e08f4f68a2c7-1337169082.737246-1302345605</value>
    </valuelist>
    <value key="abstractProcess.IgnoreReturnValue" type="bool">false</value>
    <valuelist key="abstractProcess.arguments" type="QVariantList">

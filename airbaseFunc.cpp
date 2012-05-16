@@ -4,6 +4,11 @@
 void MainWindow::airbaseFunc()
 {
 	static bool st = false;
+	QProcess *airbase0 = new QProcess();
+	QProcess *airbase1 = new QProcess();
+	QProcess *airbase2 = new QProcess();
+        QString airbase_addr1 = APP_CURRENT_PATH.append("/airbase-sh1.sh").append(" ").append(ui->essidBox->text());
+        QString airbase_addr2 = APP_CURRENT_PATH.append("/airbase-sh2.sh").append(" ").append(ui->essidBox->text());
 	if(st)
 	{
 		ui->airbaseBtn->setText("Turn On");
@@ -16,11 +21,8 @@ void MainWindow::airbaseFunc()
 		ui->essidBox->setDisabled(true);
 		st = true;
 
-		QProcess *airbase = new QProcess();
-		QString airbase_addr = APP_CURRENT_PATH
-					.append("/airbase-sh.sh").append(" ")
-					.append(ui->essidBox->text());
-		QMessageBox::information(NULL, "Command is: ", airbase_addr);
-		airbase->start(airbase_addr);
+		airbase0->start(airbase_addr1);
+		sleep(3);
+		airbase1->start(airbase_addr2);
 	}
 }
