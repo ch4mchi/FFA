@@ -34,6 +34,7 @@ int connect_db(char *db_name)
 
 int close_db()
 {
+	sqlite3_finalize(stmt); //you didn't finalized your db............. that sqlite........
 	rc = sqlite3_close(db);
 	if(rc)
 	{
