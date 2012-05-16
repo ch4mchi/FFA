@@ -35,6 +35,8 @@
  *  files in the program, then also delete it here.
  */
 
+#define DO_NOT_PRINT
+
 #if defined(linux)
     #include <linux/rtc.h>
 #endif
@@ -1263,10 +1265,11 @@ int do_attack_deauth( void )
     if(getnet(NULL, 0, 1) != 0)
         return 1;
 
+#ifdef DO_PRINT
     if( memcmp( opt.r_dmac, NULL_MAC, 6 ) == 0 )
         printf( "NB: this attack is more effective when targeting\n"
                 "a connected wireless client (-c <client's mac>).\n" );
-
+#endif
     n = 0;
 
     while( 1 )
@@ -1289,12 +1292,15 @@ int do_attack_deauth( void )
             {
                 if(i == 0)
                 {
+
+#ifdef DO_PRINT
                     PCT; printf( "Sending 64 directed DeAuth. STMAC:"
                                 " [%02X:%02X:%02X:%02X:%02X:%02X] [%2d|%2d ACKs]\r",
                                 opt.r_dmac[0],  opt.r_dmac[1],
                                 opt.r_dmac[2],  opt.r_dmac[3],
                                 opt.r_dmac[4],  opt.r_dmac[5],
                                 sacks, aacks );
+#endif
                 }
 
                 memcpy( h80211 +  4, opt.r_dmac,  6 );
@@ -1345,12 +1351,15 @@ int do_attack_deauth( void )
                         {
                             sacks++;
                         }
+
+#ifdef DO_PRINT
                         PCT; printf( "Sending 64 directed DeAuth. STMAC:"
                                     " [%02X:%02X:%02X:%02X:%02X:%02X] [%2d|%2d ACKs]\r",
                                     opt.r_dmac[0],  opt.r_dmac[1],
                                     opt.r_dmac[2],  opt.r_dmac[3],
                                     opt.r_dmac[4],  opt.r_dmac[5],
                                     sacks, aacks );
+#endif
                     }
                 }
             }
@@ -1360,12 +1369,13 @@ int do_attack_deauth( void )
         {
             /* deauthenticate all stations */
 
+#ifdef DO_PRINT
             PCT; printf( "Sending DeAuth to broadcast -- BSSID:"
                          " [%02X:%02X:%02X:%02X:%02X:%02X]\n",
                          opt.r_bssid[0], opt.r_bssid[1],
                          opt.r_bssid[2], opt.r_bssid[3],
                          opt.r_bssid[4], opt.r_bssid[5] );
-
+#endif
             memcpy( h80211, DEAUTH_REQ, 26 );
 
             memcpy( h80211 +  4, BROADCAST,   6 );
