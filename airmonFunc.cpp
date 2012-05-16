@@ -57,6 +57,7 @@ void MainWindow::airmonFunc()
 	}
 }
 
+
 void MainWindow::onTimer()
 {
 	cnt++;
