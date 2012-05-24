@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "FunctionList.h"
-
+#include <QProcess>
+#include <QString>
+#include <QCoreApplication>
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
 	ui(new Ui::MainWindow)
@@ -61,7 +63,13 @@ void MainWindow::showBitchbox(){
 	int ret;
 	QMessageBox::warning(NULL,"WTF!!","Oh My F**king God...\nThis Term Project is Terrible!\n\nPlease help me T^T");
 }
-
+void MainWindow::closeEvent(QCloseEvent *e){
+	QProcess *deleteDB = new QProcess();
+	QString currentPath = QCoreApplication::applicationDirPath();
+	QString scriptPath = currentPath.append("/deletedb.sh");
+	deleteDB->start(scriptPath);
+	QMessageBox::warning(NULL,"FFA","terminated");
+}
 void MainWindow::changeEvent(QEvent *e)
 {
 	QMainWindow::changeEvent(e);
