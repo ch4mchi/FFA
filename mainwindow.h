@@ -25,10 +25,10 @@ public:
 public slots:
 	void showBitchbox();
 	void onTimer();
-	void TotheBox();
 	void initTable();
 	void airmonFunc();
 	void airbaseFunc();
+        void captureFunc();
 	void refreshFunc();
 	void selectAP();
 	void selectClnt();

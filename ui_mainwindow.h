@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Wed May 16 12:53:46 2012
+** Created: Thu May 24 04:48:37 2012
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -14,7 +14,6 @@
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
-#include <QtGui/QComboBox>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
@@ -34,7 +33,6 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     QPushButton *btn1;
-    QComboBox *comboBox;
     QPushButton *btn2;
     QTableWidget *tableAP;
     QTableWidget *tableClient;
@@ -66,10 +64,7 @@ public:
         centralWidget->setEnabled(true);
         btn1 = new QPushButton(centralWidget);
         btn1->setObjectName(QString::fromUtf8("btn1"));
-        btn1->setGeometry(QRect(550, 350, 93, 27));
-        comboBox = new QComboBox(centralWidget);
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
-        comboBox->setGeometry(QRect(450, 350, 89, 31));
+        btn1->setGeometry(QRect(490, 350, 151, 27));
         btn2 = new QPushButton(centralWidget);
         btn2->setObjectName(QString::fromUtf8("btn2"));
         btn2->setGeometry(QRect(740, 330, 93, 27));
@@ -141,10 +136,13 @@ public:
         label_4->setFont(font1);
         airbaseBtn = new QPushButton(centralWidget);
         airbaseBtn->setObjectName(QString::fromUtf8("airbaseBtn"));
+        airbaseBtn->setEnabled(false);
         airbaseBtn->setGeometry(QRect(220, 350, 93, 27));
         essidBox = new QLineEdit(centralWidget);
         essidBox->setObjectName(QString::fromUtf8("essidBox"));
+        essidBox->setEnabled(false);
         essidBox->setGeometry(QRect(100, 350, 113, 21));
+        essidBox->setReadOnly(false);
         label_5 = new QLabel(centralWidget);
         label_5->setObjectName(QString::fromUtf8("label_5"));
         label_5->setGeometry(QRect(30, 320, 101, 21));
@@ -177,7 +175,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
-        btn1->setText(QApplication::translate("MainWindow", "Show Info", 0, QApplication::UnicodeUTF8));
+        btn1->setText(QApplication::translate("MainWindow", "Packet Capture", 0, QApplication::UnicodeUTF8));
         btn2->setText(QApplication::translate("MainWindow", "About", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = tableAP->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("MainWindow", "Name", 0, QApplication::UnicodeUTF8));

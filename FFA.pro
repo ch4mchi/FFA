@@ -11,7 +11,8 @@ SOURCES += main.cpp \
     initTable.cpp \
     deauthAllFunc.cpp \
     deauthClntFunc.cpp \
-    refreshFunc.cpp
+    refreshFunc.cpp \
+    captureFunc.cpp
 HEADERS += mainwindow.h \
     FunctionList.h
 FORMS += mainwindow.ui

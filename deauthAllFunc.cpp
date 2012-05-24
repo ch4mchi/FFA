@@ -14,7 +14,7 @@ void MainWindow::deauthAllFunc()
 					.append("/aireplay-sh.sh").append(" ")
 					.append(ui->tableAP->item(ap, 1)->text()).append(" ")
 					.append(ui->tableClient->item(i, 1)->text());
-		QMessageBox::information(NULL, "Command is: ", aireplay_addr);
+                //QMessageBox::information(NULL, "Command is: ", aireplay_addr);
 		aireplay[i]->start(aireplay_addr);
 	}
 }

@@ -3,6 +3,7 @@
 #include "FFA_sqlite3.c"
 #include "airmonFunc.cpp"
 #include "airbaseFunc.cpp"
+#include "captureFunc.cpp"
 #include "deauthAllFunc.cpp"
 #include "deauthClntFunc.cpp"
 #include "refreshFunc.cpp"

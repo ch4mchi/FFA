@@ -12,6 +12,7 @@ void MainWindow::airmonFunc()
 	static bool st = false;
 	QProcess *airmon = new QProcess();
 	QProcess *airodump = new QProcess();
+        QProcess *killAirbase = new QProcess();
 	QString currentPath = QCoreApplication::applicationDirPath();
 	QString airmon_start = APP_CURRENT_PATH
 				.append("/airmon-sh.sh");
@@ -19,6 +20,8 @@ void MainWindow::airmonFunc()
 				.append("/airmon-ksh.sh");
 	QString airodump_start = APP_CURRENT_PATH
 				.append("/airodump-sh.sh");
+        QString airbase_addr0 = APP_CURRENT_PATH
+                                .append("/airbaseKill.sh").append(" ").append(ui->essidBox->text());
 	QString path = argv_main[0];
 	if(st)
 	{
@@ -27,13 +30,15 @@ void MainWindow::airmonFunc()
 		ui->deauthAll->setDisabled(true);
 		ui->deauthClnt->setDisabled(true);
 		ui->refreshBtn->setDisabled(true);
+                ui->essidBox->setDisabled(true);
+                ui->airbaseBtn->setDisabled(true);
 		ui->airmonBtn->setText("Turn On");
 		ui->airmonStatus->setText("<font size=5 color=red>Off</font>");
 		st = false;
 		close_db();
-		QMessageBox::warning(NULL,"asdf",airmon_stop);
 		airodump->close();
 		airmon->start(airmon_stop);
+                killAirbase->start(airbase_addr0);
 	}
 	else
 	{
@@ -68,6 +73,8 @@ void MainWindow::onTimer()
 		ui->progressBar->setVisible(false);
 		ui->refreshBtn->setEnabled(true);
 		ui->airmonBtn->setEnabled(true);
+                ui->essidBox->setEnabled(true);
+                ui->airbaseBtn->setEnabled(true);
 		ui->airmonStatus->setText("<font size=5 color=green>On</font>");
 	}
 }

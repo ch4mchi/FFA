@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Wed May 16 12:53:50 2012
+** Created: Thu May 24 04:48:43 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -34,22 +34,22 @@ static const uint qt_meta_data_MainWindow[] = {
       12,   11,   11,   11, 0x0a,
       27,   11,   11,   11, 0x0a,
       37,   11,   11,   11, 0x0a,
-      48,   11,   11,   11, 0x0a,
-      60,   11,   11,   11, 0x0a,
-      73,   11,   11,   11, 0x0a,
-      87,   11,   11,   11, 0x0a,
-     101,   11,   11,   11, 0x0a,
-     112,   11,   11,   11, 0x0a,
-     125,   11,   11,   11, 0x0a,
-     141,   11,   11,   11, 0x0a,
+      49,   11,   11,   11, 0x0a,
+      62,   11,   11,   11, 0x0a,
+      76,   11,   11,   11, 0x0a,
+      90,   11,   11,   11, 0x0a,
+     104,   11,   11,   11, 0x0a,
+     115,   11,   11,   11, 0x0a,
+     128,   11,   11,   11, 0x0a,
+     144,   11,   11,   11, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_MainWindow[] = {
     "MainWindow\0\0showBitchbox()\0onTimer()\0"
-    "TotheBox()\0initTable()\0airmonFunc()\0"
-    "airbaseFunc()\0refreshFunc()\0selectAP()\0"
+    "initTable()\0airmonFunc()\0airbaseFunc()\0"
+    "captureFunc()\0refreshFunc()\0selectAP()\0"
     "selectClnt()\0deauthAllFunc()\0"
     "deauthClntFunc()\0"
 };
@@ -85,10 +85,10 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         switch (_id) {
         case 0: showBitchbox(); break;
         case 1: onTimer(); break;
-        case 2: TotheBox(); break;
-        case 3: initTable(); break;
-        case 4: airmonFunc(); break;
-        case 5: airbaseFunc(); break;
+        case 2: initTable(); break;
+        case 3: airmonFunc(); break;
+        case 4: airbaseFunc(); break;
+        case 5: captureFunc(); break;
         case 6: refreshFunc(); break;
         case 7: selectAP(); break;
         case 8: selectClnt(); break;

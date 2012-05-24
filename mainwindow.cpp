@@ -3,6 +3,7 @@
 #include <QProcess>
 #include <QString>
 #include <QCoreApplication>
+#define APP_CURRENT_PATH QCoreApplication::applicationDirPath()
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
 	ui(new Ui::MainWindow)
@@ -10,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->setupUi(this);
 
 	//UI connection
-	QObject::connect(ui->btn1, SIGNAL(clicked()), this, SLOT(TotheBox()));
+        QObject::connect(ui->btn1, SIGNAL(clicked()), this, SLOT(captureFunc()));
 	QObject::connect(ui->btn2, SIGNAL(clicked()), this, SLOT(showBitchbox()));
 	QObject::connect(ui->airmonBtn, SIGNAL(clicked()), this, SLOT(airmonFunc()));
 	QObject::connect(ui->airbaseBtn, SIGNAL(clicked()), this, SLOT(airbaseFunc()));
@@ -21,7 +22,6 @@ MainWindow::MainWindow(QWidget *parent) :
 	QObject::connect(ui->deauthClnt, SIGNAL(clicked()), this, SLOT(deauthClntFunc()));
 	QObject::connect(ui->closeBtn, SIGNAL(clicked()), this, SLOT(close()));
 
-	ui->comboBox->addItem(tr("asdf"));
 	ui->progressBar->setVisible(false);
 
 	//ui->tableAP->setSortingEnabled(true);
@@ -49,10 +49,6 @@ MainWindow::~MainWindow()
 	delete ui;
 }
 
-void MainWindow::TotheBox()
-{
-	QMessageBox::information(NULL, "Text is: ", ui->comboBox->currentText());
-}
 
 void MainWindow::selectClnt()
 {
@@ -61,13 +57,16 @@ void MainWindow::selectClnt()
 
 void MainWindow::showBitchbox(){
 	int ret;
-	QMessageBox::warning(NULL,"WTF!!","Oh My F**king God...\nThis Term Project is Terrible!\n\nPlease help me T^T");
+        QMessageBox::information(NULL,"About","Wireless Phishing Attack Scenario\n\nAutomation Tool");
 }
 void MainWindow::closeEvent(QCloseEvent *e){
 	QProcess *deleteDB = new QProcess();
+        QProcess *killAirbase = new QProcess();
+        QString airbase_addr0 = APP_CURRENT_PATH.append("/airbaseKill.sh").append(" ").append(ui->essidBox->text());
 	QString currentPath = QCoreApplication::applicationDirPath();
 	QString scriptPath = currentPath.append("/deletedb.sh");
 	deleteDB->start(scriptPath);
+        killAirbase->start(airbase_addr0);
 	QMessageBox::warning(NULL,"FFA","terminated");
 }
 void MainWindow::changeEvent(QEvent *e)
