@@ -67,7 +67,7 @@ void MainWindow::closeEvent(QCloseEvent *e){
 	QString scriptPath = currentPath.append("/deletedb.sh");
 	deleteDB->start(scriptPath);
         killAirbase->start(airbase_addr0);
-	QMessageBox::warning(NULL,"FFA","terminated");
+        //QMessageBox::warning(NULL,"FFA","terminated");
 }
 void MainWindow::changeEvent(QEvent *e)
 {

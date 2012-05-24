@@ -12,7 +12,6 @@ void MainWindow::airmonFunc()
 	static bool st = false;
 	QProcess *airmon = new QProcess();
 	QProcess *airodump = new QProcess();
-        QProcess *killAirbase = new QProcess();
 	QString currentPath = QCoreApplication::applicationDirPath();
 	QString airmon_start = APP_CURRENT_PATH
 				.append("/airmon-sh.sh");
@@ -20,12 +19,10 @@ void MainWindow::airmonFunc()
 				.append("/airmon-ksh.sh");
 	QString airodump_start = APP_CURRENT_PATH
 				.append("/airodump-sh.sh");
-        QString airbase_addr0 = APP_CURRENT_PATH
-                                .append("/airbaseKill.sh").append(" ").append(ui->essidBox->text());
 	QString path = argv_main[0];
 	if(st)
 	{
-		ui->tableAP->setDisabled(true);
+                ui->tableAP->setDisabled(true);
 		ui->tableClient->setDisabled(true);
 		ui->deauthAll->setDisabled(true);
 		ui->deauthClnt->setDisabled(true);
@@ -38,7 +35,6 @@ void MainWindow::airmonFunc()
 		close_db();
 		airodump->close();
 		airmon->start(airmon_stop);
-                killAirbase->start(airbase_addr0);
 	}
 	else
 	{
@@ -66,8 +62,8 @@ void MainWindow::airmonFunc()
 void MainWindow::onTimer()
 {
 	cnt++;
-	ui->progressBar->setValue(cnt/50);
-	if(cnt==500000)
+        ui->progressBar->setValue(cnt/30);
+        if(cnt==300000)
 	{
 		timer->stop();
 		ui->progressBar->setVisible(false);

@@ -13,7 +13,9 @@ void MainWindow::airbaseFunc()
 	if(st)
 	{
 		ui->airbaseBtn->setText("Turn On");
+                ui->btn1->setDisabled(true);
 		ui->essidBox->setEnabled(true);
+                ui->airmonBtn->setEnabled(true);
 		st = false;
 
                 killAirbase->start(airbase_addr0);
@@ -21,7 +23,9 @@ void MainWindow::airbaseFunc()
 	else
 	{
 		ui->airbaseBtn->setText("Turn Off");
+                ui->btn1->setEnabled(true);
 		ui->essidBox->setDisabled(true);
+                ui->airmonBtn->setDisabled(true);
 		st = true;
 
 		airbase0->start(airbase_addr1);

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Thu May 24 04:48:37 2012
+** Created: Thu May 24 13:17:19 2012
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -64,10 +64,11 @@ public:
         centralWidget->setEnabled(true);
         btn1 = new QPushButton(centralWidget);
         btn1->setObjectName(QString::fromUtf8("btn1"));
-        btn1->setGeometry(QRect(490, 350, 151, 27));
+        btn1->setEnabled(false);
+        btn1->setGeometry(QRect(410, 360, 151, 27));
         btn2 = new QPushButton(centralWidget);
         btn2->setObjectName(QString::fromUtf8("btn2"));
-        btn2->setGeometry(QRect(740, 330, 93, 27));
+        btn2->setGeometry(QRect(730, 320, 93, 27));
         tableAP = new QTableWidget(centralWidget);
         if (tableAP->columnCount() < 3)
             tableAP->setColumnCount(3);
@@ -117,7 +118,7 @@ public:
         label_2->setFont(font);
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(260, 10, 101, 21));
+        label_3->setGeometry(QRect(240, 0, 141, 41));
         QFont font1;
         font1.setPointSize(15);
         label_3->setFont(font1);
@@ -132,24 +133,24 @@ public:
         airmonBtn->setGeometry(QRect(420, 10, 93, 27));
         label_4 = new QLabel(centralWidget);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(30, 350, 101, 17));
+        label_4->setGeometry(QRect(30, 360, 71, 17));
         label_4->setFont(font1);
         airbaseBtn = new QPushButton(centralWidget);
         airbaseBtn->setObjectName(QString::fromUtf8("airbaseBtn"));
         airbaseBtn->setEnabled(false);
-        airbaseBtn->setGeometry(QRect(220, 350, 93, 27));
+        airbaseBtn->setGeometry(QRect(220, 360, 93, 27));
         essidBox = new QLineEdit(centralWidget);
         essidBox->setObjectName(QString::fromUtf8("essidBox"));
         essidBox->setEnabled(false);
-        essidBox->setGeometry(QRect(100, 350, 113, 21));
+        essidBox->setGeometry(QRect(100, 360, 113, 21));
         essidBox->setReadOnly(false);
         label_5 = new QLabel(centralWidget);
         label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setGeometry(QRect(30, 320, 101, 21));
+        label_5->setGeometry(QRect(30, 320, 191, 31));
         label_5->setFont(font1);
         closeBtn = new QPushButton(centralWidget);
         closeBtn->setObjectName(QString::fromUtf8("closeBtn"));
-        closeBtn->setGeometry(QRect(740, 370, 93, 27));
+        closeBtn->setGeometry(QRect(730, 360, 93, 27));
         progressBar = new QProgressBar(centralWidget);
         progressBar->setObjectName(QString::fromUtf8("progressBar"));
         progressBar->setGeometry(QRect(360, 50, 118, 23));
@@ -196,7 +197,7 @@ public:
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Sans'; font-size:15pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:15pt;\">Airmon : </span></p></body></html>", 0, QApplication::UnicodeUTF8));
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Scanning : </p></body></html>", 0, QApplication::UnicodeUTF8));
         airmonStatus->setText(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -207,13 +208,13 @@ public:
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Sans'; font-size:15pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">ESSID : </span></p></body></html>", 0, QApplication::UnicodeUTF8));
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Name : </span></p></body></html>", 0, QApplication::UnicodeUTF8));
         airbaseBtn->setText(QApplication::translate("MainWindow", "Turn On", 0, QApplication::UnicodeUTF8));
         label_5->setText(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Sans'; font-size:15pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">Airbase</span></p></body></html>", 0, QApplication::UnicodeUTF8));
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Fake AP Generator</p></body></html>", 0, QApplication::UnicodeUTF8));
         closeBtn->setText(QApplication::translate("MainWindow", "Close", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
