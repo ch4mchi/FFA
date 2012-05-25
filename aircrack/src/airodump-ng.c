@@ -3029,6 +3029,7 @@ void dump_print( int ws_row, int ws_col, int if_num )
 
 		snprintf(input_ap.ap_essid, sizeof(ap_cur->essid)-1, "%s", ap_cur->essid);
 		input_ap.ap_channel = ap_cur->channel;
+		if(input_ap.ap_channel <= 13 && strcmp(input_ap.ap_essid, "") != 0)
 		insert_ap(input_ap);
 /*------------------------------------*/
 
