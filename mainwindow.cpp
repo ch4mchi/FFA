@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+//#include "sslwindow.h"
 #include "FunctionList.h"
 #include <QProcess>
 #include <QString>
@@ -21,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	QObject::connect(ui->deauthAll, SIGNAL(clicked()), this, SLOT(deauthAllFunc()));
 	QObject::connect(ui->deauthClnt, SIGNAL(clicked()), this, SLOT(deauthClntFunc()));
 	QObject::connect(ui->closeBtn, SIGNAL(clicked()), this, SLOT(close()));
+	QObject::connect(ui->ssl, SIGNAL(clicked()), this, SLOT(openSSLWindow()));
 
 	ui->progressBar->setVisible(false);
 
@@ -59,6 +61,12 @@ void MainWindow::showBitchbox(){
 	int ret;
         QMessageBox::information(NULL,"About","Wireless Phishing Attack Scenario\n\nAutomation Tool");
 }
+
+void MainWindow::openSSLWindow()
+{
+    ui->tabWidget->setCurrentIndex(1);
+}
+
 void MainWindow::closeEvent(QCloseEvent *e){
 	QProcess *deleteDB = new QProcess();
         QProcess *killAirbase = new QProcess();
