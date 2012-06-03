@@ -20,8 +20,11 @@ void MainWindow::airbaseFunc()
 	{
 		ui->airbaseBtn->setText("Turn On");
                 ui->btn1->setDisabled(true);
+		ui->ssl->setDisabled(true);
+		ui->sslRefresh->setDisabled(true);
 		ui->essidBox->setEnabled(true);
                 ui->airmonBtn->setEnabled(true);
+		ui->refreshBtn->setEnabled(true);
 		st = false;
                 killAirbase->start(airbase_Kill);
                 sleep(5);
@@ -33,8 +36,13 @@ void MainWindow::airbaseFunc()
 	{
 		ui->airbaseBtn->setText("Turn Off");
                 ui->btn1->setEnabled(true);
+		ui->ssl->setEnabled(true);
+		ui->sslRefresh->setEnabled(true);
 		ui->essidBox->setDisabled(true);
                 ui->airmonBtn->setDisabled(true);
+		ui->deauthClnt->setDisabled(true);
+		ui->deauthAll->setDisabled(true);
+		ui->refreshBtn->setDisabled(true);
                 st = true;
                 airbase0->start(airbase_addr);
                 killairodump->start(airodump_stop);

@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sun Jun 3 16:27:38 2012
-**      by: Qt User Interface Compiler version 4.7.0
+** Created: Sun Jun 3 12:06:48 2012
+**      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -24,6 +24,7 @@
 #include <QtGui/QStatusBar>
 #include <QtGui/QTabWidget>
 #include <QtGui/QTableWidget>
+#include <QtGui/QTextEdit>
 #include <QtGui/QToolBar>
 #include <QtGui/QWidget>
 
@@ -56,7 +57,8 @@ public:
     QPushButton *deauthClnt;
     QWidget *tab_2;
     QLabel *label_6;
-    QTableWidget *packetInfo;
+    QTextEdit *packetInfo;
+    QPushButton *sslRefresh;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -71,7 +73,7 @@ public:
         centralWidget->setEnabled(true);
         tabWidget = new QTabWidget(centralWidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
-        tabWidget->setGeometry(QRect(0, 0, 841, 491));
+        tabWidget->setGeometry(QRect(10, 0, 841, 491));
         tab = new QWidget();
         tab->setObjectName(QString::fromUtf8("tab"));
         label = new QLabel(tab);
@@ -95,49 +97,49 @@ public:
         tableAP->setMaximumSize(QSize(12345, 16777215));
         label_5 = new QLabel(tab);
         label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setGeometry(QRect(20, 330, 191, 31));
+        label_5->setGeometry(QRect(20, 360, 191, 31));
         QFont font1;
         font1.setPointSize(15);
         label_5->setFont(font1);
         airbaseBtn = new QPushButton(tab);
         airbaseBtn->setObjectName(QString::fromUtf8("airbaseBtn"));
         airbaseBtn->setEnabled(false);
-        airbaseBtn->setGeometry(QRect(210, 370, 93, 27));
+        airbaseBtn->setGeometry(QRect(210, 400, 93, 27));
         essidBox = new QLineEdit(tab);
         essidBox->setObjectName(QString::fromUtf8("essidBox"));
         essidBox->setEnabled(false);
-        essidBox->setGeometry(QRect(90, 370, 113, 21));
+        essidBox->setGeometry(QRect(90, 400, 113, 21));
         essidBox->setReadOnly(false);
         label_4 = new QLabel(tab);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(20, 370, 71, 17));
+        label_4->setGeometry(QRect(20, 400, 71, 17));
         label_4->setFont(font1);
         progressBar = new QProgressBar(tab);
         progressBar->setObjectName(QString::fromUtf8("progressBar"));
-        progressBar->setGeometry(QRect(370, 60, 118, 23));
+        progressBar->setGeometry(QRect(380, 60, 118, 23));
         progressBar->setMaximum(10000);
         progressBar->setValue(24);
         label_3 = new QLabel(tab);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(250, 10, 141, 41));
+        label_3->setGeometry(QRect(260, 10, 141, 41));
         label_3->setFont(font1);
         airmonStatus = new QLabel(tab);
         airmonStatus->setObjectName(QString::fromUtf8("airmonStatus"));
-        airmonStatus->setGeometry(QRect(370, 20, 62, 21));
+        airmonStatus->setGeometry(QRect(380, 20, 62, 21));
         QFont font2;
         font2.setPointSize(10);
         airmonStatus->setFont(font2);
         airmonBtn = new QPushButton(tab);
         airmonBtn->setObjectName(QString::fromUtf8("airmonBtn"));
-        airmonBtn->setGeometry(QRect(430, 20, 93, 27));
+        airmonBtn->setGeometry(QRect(440, 20, 93, 27));
         label_2 = new QLabel(tab);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(520, 100, 101, 17));
+        label_2->setGeometry(QRect(510, 100, 101, 17));
         label_2->setFont(font);
         btn1 = new QPushButton(tab);
         btn1->setObjectName(QString::fromUtf8("btn1"));
         btn1->setEnabled(false);
-        btn1->setGeometry(QRect(150, 410, 151, 27));
+        btn1->setGeometry(QRect(390, 360, 151, 27));
         tableClient = new QTableWidget(tab);
         if (tableClient->columnCount() < 2)
             tableClient->setColumnCount(2);
@@ -147,12 +149,13 @@ public:
         tableClient->setHorizontalHeaderItem(1, __qtablewidgetitem4);
         tableClient->setObjectName(QString::fromUtf8("tableClient"));
         tableClient->setEnabled(false);
-        tableClient->setGeometry(QRect(410, 130, 301, 181));
+        tableClient->setGeometry(QRect(400, 130, 301, 181));
         tableClient->setMinimumSize(QSize(256, 0));
         tableClient->horizontalHeader()->setMinimumSectionSize(27);
         ssl = new QPushButton(tab);
         ssl->setObjectName(QString::fromUtf8("ssl"));
-        ssl->setGeometry(QRect(20, 410, 93, 27));
+        ssl->setEnabled(false);
+        ssl->setGeometry(QRect(390, 400, 151, 27));
         closeBtn = new QPushButton(tab);
         closeBtn->setObjectName(QString::fromUtf8("closeBtn"));
         closeBtn->setGeometry(QRect(720, 400, 93, 27));
@@ -176,13 +179,17 @@ public:
         tab_2->setObjectName(QString::fromUtf8("tab_2"));
         label_6 = new QLabel(tab_2);
         label_6->setObjectName(QString::fromUtf8("label_6"));
-        label_6->setGeometry(QRect(10, 10, 221, 31));
+        label_6->setGeometry(QRect(60, 30, 221, 31));
         QFont font3;
         font3.setPointSize(13);
         label_6->setFont(font3);
-        packetInfo = new QTableWidget(tab_2);
+        packetInfo = new QTextEdit(tab_2);
         packetInfo->setObjectName(QString::fromUtf8("packetInfo"));
-        packetInfo->setGeometry(QRect(20, 50, 256, 192));
+        packetInfo->setGeometry(QRect(110, 90, 611, 261));
+        sslRefresh = new QPushButton(tab_2);
+        sslRefresh->setObjectName(QString::fromUtf8("sslRefresh"));
+        sslRefresh->setEnabled(false);
+        sslRefresh->setGeometry(QRect(370, 390, 93, 27));
         tabWidget->addTab(tab_2, QString());
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
@@ -250,6 +257,7 @@ public:
         deauthClnt->setText(QApplication::translate("MainWindow", "Deauth Client", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Main", 0, QApplication::UnicodeUTF8));
         label_6->setText(QApplication::translate("MainWindow", "<SSL-Stripped Packets>", 0, QApplication::UnicodeUTF8));
+        sslRefresh->setText(QApplication::translate("MainWindow", "Refresh", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Packet", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

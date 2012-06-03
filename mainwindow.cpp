@@ -3,6 +3,8 @@
 #include "FunctionList.h"
 #include <QProcess>
 #include <QString>
+#include <QTextStream>
+#include <QFile>
 #include <QCoreApplication>
 #define APP_CURRENT_PATH QCoreApplication::applicationDirPath()
 MainWindow::MainWindow(QWidget *parent) :
@@ -23,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	QObject::connect(ui->deauthClnt, SIGNAL(clicked()), this, SLOT(deauthClntFunc()));
 	QObject::connect(ui->closeBtn, SIGNAL(clicked()), this, SLOT(close()));
 	QObject::connect(ui->ssl, SIGNAL(clicked()), this, SLOT(openSSLWindow()));
+	QObject::connect(ui->sslRefresh, SIGNAL(clicked()), this, SLOT(openSSLWindow()));
 
 	ui->progressBar->setVisible(false);
 
@@ -64,7 +67,25 @@ void MainWindow::showBitchbox(){
 
 void MainWindow::openSSLWindow()
 {
-    ui->tabWidget->setCurrentIndex(1);
+    QString line;
+    QFile *file = new QFile;
+    QString filename = "/pentest/web/sslstrip/sslstrip.log";
+    if(!file->exists(filename))
+	QMessageBox::information(NULL,"Error!","SSL-Stripped log file does not exist!");
+    else
+    {
+	ui->packetInfo->setText("");
+	file->setFileName(filename);
+	file->open(QIODevice::ReadOnly);
+
+	QTextStream read(file);
+	while(!read.atEnd())
+	    ui->packetInfo->append(read.readLine());
+	//ui->packetInfo->setCursor(ui->packetInfo->textCursor().atStart());
+
+	file->close();
+	ui->tabWidget->setCurrentIndex(1);
+    }
 }
 
 void MainWindow::closeEvent(QCloseEvent *e){
