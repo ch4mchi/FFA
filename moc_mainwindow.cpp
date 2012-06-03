@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Sun Jun 3 15:04:09 2012
+** Created: Sun Jun 3 16:27:42 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-      11,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -33,24 +33,25 @@ static const uint qt_meta_data_MainWindow[] = {
  // slots: signature, parameters, type, tag, flags
       12,   11,   11,   11, 0x0a,
       27,   11,   11,   11, 0x0a,
-      37,   11,   11,   11, 0x0a,
-      49,   11,   11,   11, 0x0a,
-      62,   11,   11,   11, 0x0a,
-      76,   11,   11,   11, 0x0a,
-      90,   11,   11,   11, 0x0a,
-     104,   11,   11,   11, 0x0a,
-     115,   11,   11,   11, 0x0a,
-     128,   11,   11,   11, 0x0a,
+      43,   11,   11,   11, 0x0a,
+      53,   11,   11,   11, 0x0a,
+      65,   11,   11,   11, 0x0a,
+      78,   11,   11,   11, 0x0a,
+      92,   11,   11,   11, 0x0a,
+     106,   11,   11,   11, 0x0a,
+     120,   11,   11,   11, 0x0a,
+     131,   11,   11,   11, 0x0a,
      144,   11,   11,   11, 0x0a,
+     160,   11,   11,   11, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_MainWindow[] = {
-    "MainWindow\0\0showBitchbox()\0onTimer()\0"
-    "initTable()\0airmonFunc()\0airbaseFunc()\0"
-    "captureFunc()\0refreshFunc()\0selectAP()\0"
-    "selectClnt()\0deauthAllFunc()\0"
+    "MainWindow\0\0showBitchbox()\0openSSLWindow()\0"
+    "onTimer()\0initTable()\0airmonFunc()\0"
+    "airbaseFunc()\0captureFunc()\0refreshFunc()\0"
+    "selectAP()\0selectClnt()\0deauthAllFunc()\0"
     "deauthClntFunc()\0"
 };
 
@@ -84,19 +85,20 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: showBitchbox(); break;
-        case 1: onTimer(); break;
-        case 2: initTable(); break;
-        case 3: airmonFunc(); break;
-        case 4: airbaseFunc(); break;
-        case 5: captureFunc(); break;
-        case 6: refreshFunc(); break;
-        case 7: selectAP(); break;
-        case 8: selectClnt(); break;
-        case 9: deauthAllFunc(); break;
-        case 10: deauthClntFunc(); break;
+        case 1: openSSLWindow(); break;
+        case 2: onTimer(); break;
+        case 3: initTable(); break;
+        case 4: airmonFunc(); break;
+        case 5: airbaseFunc(); break;
+        case 6: captureFunc(); break;
+        case 7: refreshFunc(); break;
+        case 8: selectAP(); break;
+        case 9: selectClnt(); break;
+        case 10: deauthAllFunc(); break;
+        case 11: deauthClntFunc(); break;
         default: ;
         }
-        _id -= 11;
+        _id -= 12;
     }
     return _id;
 }

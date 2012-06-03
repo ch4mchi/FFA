@@ -12,8 +12,8 @@ void MainWindow::deauthAllFunc()
 		aireplay[i] = new QProcess();
 		QString aireplay_addr = APP_CURRENT_PATH
                                         .append("/aireplayAll.sh").append(" ")
-                                        .append(ui->tableAP->item(ap, 1)->text());
-                //QMessageBox::information(NULL, "Command is: ", aireplay_addr);
+                                        .append(ui->tableAP->item(ap, 1)->text())
+                                        .append(ui->tableAP->item(ap,2)->text());
 		aireplay[i]->start(aireplay_addr);
 	}
 }

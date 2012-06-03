@@ -12,9 +12,11 @@
 #include <QComboBox>
 #include <QTimer>
 #include "ui_mainwindow.h"
+//#include "sslwindow.h"
 
 namespace Ui {
 	class MainWindow;
+	//class sslwindow;
 }
 
 class MainWindow : public QMainWindow {
@@ -24,6 +26,7 @@ public:
 	~MainWindow();
 public slots:
 	void showBitchbox();
+	void openSSLWindow();
 	void onTimer();
 	void initTable();
 	void airmonFunc();
@@ -39,6 +42,7 @@ protected:
 	void closeEvent(QCloseEvent *e);
 private:
 	Ui::MainWindow *ui;
+	//sslwindow *sub_w;
 	QSortFilterProxyModel *proxyModel;
 };
 
