@@ -12,6 +12,8 @@ void MainWindow::airmonFunc()
 	static bool st = false;
 	QProcess *airmon = new QProcess();
 	QProcess *airodump = new QProcess();
+        QProcess *delDB = new QProcess();
+        QProcess *killairodump = new QProcess();
 	QString currentPath = QCoreApplication::applicationDirPath();
 	QString airmon_start = APP_CURRENT_PATH
 				.append("/airmon-sh.sh");
@@ -19,6 +21,8 @@ void MainWindow::airmonFunc()
 				.append("/airmon-ksh.sh");
 	QString airodump_start = APP_CURRENT_PATH
 				.append("/airodump-sh.sh");
+        QString airodump_stop = APP_CURRENT_PATH.append("/airodumpKill.sh");
+        QString delDB_start = APP_CURRENT_PATH.append("/deletedb.sh");
 	QString path = argv_main[0];
 	if(st)
 	{
@@ -33,7 +37,8 @@ void MainWindow::airmonFunc()
 		ui->airmonStatus->setText("<font size=5 color=red>Off</font>");
 		st = false;
 		close_db();
-		airodump->close();
+                delDB->start(delDB_start);
+                killairodump->start(airodump_stop);
 		airmon->start(airmon_stop);
 	}
 	else
