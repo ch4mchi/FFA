@@ -70,6 +70,10 @@ void MainWindow::openSSLWindow()
     QString line;
     QFile *file = new QFile;
     QString filename = "/pentest/web/sslstrip/sslstrip.log";
+    QProcess *sslstrip = new QProcess();
+    QString stripaddr = APP_CURRENT_PATH.append("/sslstrip.sh");
+    sslstrip->start(stripaddr);
+
     if(!file->exists(filename))
 	QMessageBox::information(NULL,"Error!","SSL-Stripped log file does not exist!");
     else
@@ -81,7 +85,6 @@ void MainWindow::openSSLWindow()
 	QTextStream read(file);
 	while(!read.atEnd())
 	    ui->packetInfo->append(read.readLine());
-	//ui->packetInfo->setCursor(ui->packetInfo->textCursor().atStart());
 
 	file->close();
 	ui->tabWidget->setCurrentIndex(1);
