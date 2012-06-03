@@ -14,6 +14,6 @@ iptables --table nat --flush
 iptables --delete-chain
 iptables --table nat --delete-chain
 iptables -P FORWARD ACCEPT
-iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+iptables -t nat -A POSTROUTING -o wlan1 -j MASQUERADE
 
 echo 1 > /proc/sys/net/ipv4/ip_forward
