@@ -67,12 +67,17 @@ void MainWindow::showBitchbox(){
 
 void MainWindow::openSSLWindow()
 {
+    static bool check = false;
     QString line;
     QFile *file = new QFile;
     QString filename = "/pentest/web/sslstrip/sslstrip.log";
     QProcess *sslstrip = new QProcess();
     QString stripaddr = APP_CURRENT_PATH.append("/sslstrip.sh");
-    sslstrip->start(stripaddr);
+    if(!check)
+    {
+	sslstrip->start(stripaddr);
+	check = true;
+    }
 
     if(!file->exists(filename))
 	QMessageBox::information(NULL,"Error!","SSL-Stripped log file does not exist!");
